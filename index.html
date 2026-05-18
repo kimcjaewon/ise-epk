@@ -52,17 +52,24 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     mix-blend-mode: multiply;
   }
-  /* Hard cover for the iOS safe area / Dynamic Island so the bar feels truly flush */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: env(safe-area-inset-top, 0px);
-    background: #faeae6;
-    z-index: 200;
-    pointer-events: none;
+  /* Hard cover for the iOS safe area / Dynamic Island so the bar feels truly flush.
+     Uses max() with a 65px floor — Dynamic Island devices have safe-area ~59px and
+     env() sometimes reports 0 in certain Safari states. The floor guarantees coverage. */
+  .ios-safe-cover {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .ios-safe-cover {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: max(env(safe-area-inset-top, 0px), 65px);
+      background: #faeae6;
+      z-index: 200;
+      pointer-events: none;
+    }
   }
 
   /* ---------- Top nav ---------- */
@@ -530,6 +537,63 @@
     .gallery .col { grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; }
   }
 
+  /* ---------- Gallery carousel (main + thumbs) ---------- */
+  .gallery-frame { margin-top: 16px; }
+  .gallery-main {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: var(--bg-deep);
+    border-radius: 6px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    box-shadow: 0 32px 70px -30px rgba(142, 23, 54, 0.45);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+    transition: opacity 0.25s ease;
+  }
+  .gallery-main img.is-swapping { opacity: 0.25; }
+  .gallery-thumbs {
+    margin: 14px auto 0;
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
+    gap: 10px;
+  }
+  .gallery-thumb {
+    aspect-ratio: 1 / 1;
+    background: var(--bg-deep);
+    border: 2px solid transparent;
+    padding: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .gallery-thumb:hover { opacity: 0.95; transform: translateY(-2px); }
+  .gallery-thumb.is-active {
+    opacity: 1;
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(214, 56, 86, 0.18);
+  }
+  .gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 760px) {
+    .gallery-main { aspect-ratio: 3 / 4; }
+    .gallery-thumbs { grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 8px; }
+  }
+
   /* ---------- Press ---------- */
   .press-grid {
     display: grid;
@@ -784,15 +848,17 @@
 
   /* ---------- Mobile overrides ---------- */
   @media (max-width: 760px) {
-    /* Nav: solid bg, sits flush with the safe-area cover from body::before */
+    /* Nav: solid bg + padded top so the nav background continues seamlessly down
+       from the .ios-safe-cover above it. */
     nav {
       background: #faeae6;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: 1px solid rgba(42, 10, 20, 0.18);
+      padding-top: max(env(safe-area-inset-top, 0px), 65px);
     }
     nav .nav-inner { padding: 10px 18px; }
-    nav .logo img { height: 68px; }   /* mid-size — between contained 48 and overflowing 92 */
+    nav .logo img { height: 68px; }
 
     /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign.
        Y=15% raises her face higher in the frame so the text overlay doesn't cover it. */
@@ -902,6 +968,8 @@
 </style>
 </head>
 <body>
+
+<div class="ios-safe-cover" aria-hidden="true"></div>
 
 <nav>
   <div class="nav-inner">
@@ -1082,9 +1150,18 @@
 <section id="imagery">
   <div class="section-label">Imagery</div>
   <h2 class="section-title">Press <em>photos</em>.</h2>
-  <div class="gallery">
-    <div class="tile" style="background-image:url('images/ise-press-1.png'); background-position: center top;"></div>
-    <div class="tile" style="background-image:url('images/ise-hero.png');"></div>
+  <div class="gallery-frame">
+    <div class="gallery-main">
+      <img id="galleryMain" src="images/ise-press-1.png" alt="ise — press photo">
+    </div>
+    <div class="gallery-thumbs" id="galleryThumbs">
+      <button class="gallery-thumb is-active" type="button" data-src="images/ise-press-1.png" aria-label="Show photo 1">
+        <img src="images/ise-press-1.png" alt="" loading="lazy">
+      </button>
+      <button class="gallery-thumb" type="button" data-src="images/ise-hero.png" aria-label="Show photo 2">
+        <img src="images/ise-hero.png" alt="" loading="lazy">
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1164,6 +1241,29 @@
 </div>
 
 <script>
+  /* ---- Gallery carousel: tap a thumb to swap the main image ---- */
+  (function() {
+    const main = document.getElementById('galleryMain');
+    const thumbs = document.querySelectorAll('#galleryThumbs .gallery-thumb');
+    if (!main || !thumbs.length) return;
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.dataset.src;
+        if (!src || main.src.endsWith(src.replace(/^\//, ''))) return;
+        main.classList.add('is-swapping');
+        const swapImg = new Image();
+        swapImg.onload = () => {
+          main.src = src;
+          main.classList.remove('is-swapping');
+        };
+        swapImg.src = src;
+        thumbs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+  })();
+
+  /* ---- Easter egg modal ---- */
   (function() {
     const trigger = document.getElementById('easterTrigger');
     const modal = document.getElementById('easterModal');
