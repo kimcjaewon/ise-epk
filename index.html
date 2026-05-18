@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ise — Electronic Press Kit</title>
+<meta name="description" content="ise (pronounced 'ice') — pop/R&B singer-songwriter based in LA. Born in Manila, raised in California. Official EPK." />
+<meta property="og:title" content="ise — EPK" />
+<meta property="og:description" content="Pop/R&B singer-songwriter. Born in Manila, raised in California, based in LA." />
+<meta property="og:image" content="https://i.scdn.co/image/ab6761610000e5eb5c8d93c1d0baa18eb0198207" />
+<meta property="og:type" content="profile" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #faeae6;            /* warm blush ivory — light but rosy */
+    --bg-deep: #f1cdc6;        /* dusty rose for alt sections */
+    --bg-card: #ffffff;        /* pure white cards for contrast */
+    --ink: #2a0a14;            /* deep wine ink, almost black */
+    --ink-soft: #6d2f3e;       /* muted body text in rose-brown */
+    --rose: #d63856;           /* the star — rose red */
+    --rose-deep: #8e1736;      /* deeper rose for hover/depth */
+    --rose-soft: #f4a8b4;      /* champagne pink */
+    --gold: #c9a35a;           /* warm gold accent for small touches */
+    --rule: rgba(42, 10, 20, 0.14);
+    --max: 1100px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* subtle film-grain texture for analog R&B feel */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    z-index: 100;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+
+  /* ---------- Top nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 234, 230, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  nav .logo img {
+    height: 68px;
+    width: auto;
+    display: block;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--rose); }
+
+  @media (max-width: 720px) { nav ul { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/ise-hero.png');
+    background-size: cover;
+    /* Ise is on the LEFT third of the photo — anchor the crop there so she's visible */
+    background-position: 18% center;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .hero-grad {
+    position: absolute;
+    inset: 0;
+    /* light on the left (Ise's face) → darker on the right (Spotify card area) */
+    background:
+      radial-gradient(ellipse at 78% 50%, rgba(214, 56, 86, 0.28) 0%, transparent 55%),
+      linear-gradient(90deg, rgba(42, 10, 20, 0.0) 0%, rgba(42, 10, 20, 0.25) 40%, rgba(42, 10, 20, 0.7) 100%),
+      linear-gradient(180deg, rgba(42, 10, 20, 0.05) 0%, rgba(42, 10, 20, 0.35) 65%, rgba(42, 10, 20, 0.88) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 80px 32px 60px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: end;
+    color: #faeae6;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--rose);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(80px, 16vw, 200px);
+    line-height: 0.92;
+    margin: 0 0 28px 0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, #ffffff 0%, #f4a8b4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 40px rgba(214, 56, 86, 0.3);
+  }
+  .hero .tagline {
+    font-size: clamp(16px, 1.8vw, 19px);
+    max-width: 480px;
+    color: rgba(250, 234, 230, 0.9);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .hero .meta-row {
+    margin-top: 32px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250, 234, 230, 0.7);
+  }
+  .hero .meta-row span::before {
+    content: "♦  ";
+    color: var(--rose);
+  }
+
+  /* Spotify card sitting inside the hero */
+  .hero-player {
+    background: rgba(42, 10, 20, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(244, 168, 180, 0.25);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow:
+      0 30px 80px -20px rgba(142, 23, 54, 0.6),
+      0 0 0 1px rgba(214, 56, 86, 0.15) inset;
+  }
+  .hero-player .player-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--rose-soft);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .hero-player .player-label .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    box-shadow: 0 0 0 4px rgba(214, 56, 86, 0.25);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(214, 56, 86, 0.25); }
+    50%      { box-shadow: 0 0 0 8px rgba(214, 56, 86, 0.05); }
+  }
+  .hero-player iframe {
+    display: block;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  @media (max-width: 880px) {
+    .hero-content { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-player { margin-top: 8px; }
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 110px 32px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  section + section { padding-top: 0; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--rose);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6.5vw, 68px);
+    line-height: 1.05;
+    margin: 0 0 40px 0;
+    color: var(--ink);
+    max-width: 760px;
+    letter-spacing: -0.01em;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  /* ---------- Bio ---------- */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .bio-grid p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+  }
+  .bio-grid strong { color: var(--ink); font-weight: 500; }
+  .bio-grid em { color: var(--rose-deep); font-style: italic; }
+  .bio-facts {
+    background: var(--bg-card);
+    padding: 28px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 20px 50px -30px rgba(142, 23, 54, 0.3);
+  }
+  .bio-facts dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 14px 16px;
+    font-size: 14px;
+  }
+  .bio-facts dt {
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding-top: 3px;
+    font-weight: 600;
+  }
+  .bio-facts dd {
+    margin: 0;
+    color: var(--ink);
+  }
+  @media (max-width: 760px) {
+    .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ---------- Listen / Discography ---------- */
+  .listen-wrap {
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(214, 56, 86, 0.12) 0%, transparent 50%),
+      var(--bg-deep);
+    padding: 110px 32px;
+    margin: 0;
+  }
+  .listen-wrap .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .listen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .listen-grid .panel-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ink);
+    margin: 0 0 18px 0;
+  }
+  .panel-card {
+    background: var(--bg-card);
+    padding: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 24px 60px -28px rgba(142, 23, 54, 0.4);
+  }
+  .panel-card iframe {
+    display: block;
+    border-radius: 12px;
+    width: 100%;
+  }
+  .track-list {
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .track {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+    cursor: pointer;
+  }
+  .track:last-child { border-bottom: 0; }
+  .track:hover {
+    background: rgba(244, 168, 180, 0.18);
+    padding-left: 30px;
+  }
+  .track:hover .t-title { color: var(--rose-deep); }
+  .track:hover .t-arrow { transform: translateX(4px); color: var(--rose); }
+  .track .t-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--rose);
+    font-size: 14px;
+    width: 24px;
+    flex-shrink: 0;
+  }
+  .track .t-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    flex: 1;
+    transition: color 0.2s ease;
+  }
+  .track .t-meta {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+  }
+  .track .t-arrow {
+    color: var(--ink-soft);
+    font-size: 14px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    margin-left: 4px;
+  }
+  @media (max-width: 760px) {
+    .listen-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Watch / Music videos ---------- */
+  .videos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .video-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -28px rgba(142, 23, 54, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 60px -25px rgba(214, 56, 86, 0.45);
+  }
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--ink);
+  }
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .video-caption {
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .video-caption .v-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .video-caption .v-meta {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--rose);
+    font-weight: 600;
+  }
+  @media (max-width: 760px) {
+    .videos-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Imagery / Gallery ---------- */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .gallery .tile {
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--bg-deep);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -30px rgba(142, 23, 54, 0.4);
+  }
+  .gallery .tile.placeholder {
+    background:
+      linear-gradient(135deg, var(--bg-deep) 0%, var(--rose-soft) 100%);
+  }
+  .gallery .tile.placeholder::after {
+    content: "Press photo — add yours here";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose-deep);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px;
+    font-weight: 500;
+  }
+  .gallery .col {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+  }
+  .gallery .col .tile { aspect-ratio: auto; }
+  @media (max-width: 760px) {
+    .gallery { grid-template-columns: 1fr; }
+    .gallery .col { grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ---------- Press ---------- */
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .quote {
+    border-left: 2px solid var(--rose);
+    padding: 4px 0 4px 28px;
+    position: relative;
+  }
+  .quote::before {
+    content: "“";
+    position: absolute;
+    left: 16px;
+    top: -24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    color: var(--rose-soft);
+    line-height: 1;
+  }
+  .quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 16px 0;
+  }
+  .quote cite {
+    font-style: normal;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* ---------- Connect ---------- */
+  .socials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .socials a {
+    background: var(--bg-card);
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    transition: all 0.25s ease;
+    box-shadow: 0 12px 30px -20px rgba(142, 23, 54, 0.3);
+    position: relative;
+  }
+  .socials a:hover {
+    transform: translateY(-3px);
+    border-color: var(--rose);
+    box-shadow: 0 20px 40px -20px rgba(214, 56, 86, 0.5);
+  }
+  .socials a::after {
+    content: "↗";
+    position: absolute;
+    top: 24px;
+    right: 22px;
+    color: var(--rose);
+    font-size: 18px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .socials a:hover::after {
+    opacity: 1;
+    transform: translate(3px, -3px);
+  }
+  .socials .platform {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--rose);
+    font-weight: 600;
+  }
+  .socials .handle {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-card {
+    background:
+      radial-gradient(ellipse at 90% 10%, rgba(214, 56, 86, 0.4) 0%, transparent 60%),
+      linear-gradient(135deg, var(--ink) 0%, #4a0f20 100%);
+    color: #faeae6;
+    padding: 72px 56px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    box-shadow: 0 40px 80px -30px rgba(142, 23, 54, 0.6);
+  }
+  .contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .contact-card h3 em {
+    font-style: italic;
+    color: var(--rose-soft);
+  }
+  .contact-card .detail { margin-bottom: 18px; }
+  .contact-card .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--rose-soft);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .contact-card a {
+    color: #faeae6;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(244, 168, 180, 0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+  }
+  .contact-card a:hover { border-color: var(--rose-soft); }
+  @media (max-width: 760px) {
+    .contact-card { grid-template-columns: 1fr; padding: 48px 28px; gap: 28px; }
+    .contact-card h3 { font-size: 36px; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 70px 24px 70px;
+    background:
+      radial-gradient(ellipse at center top, rgba(214, 56, 86, 0.06) 0%, transparent 60%),
+      var(--bg);
+    border-top: 1px solid var(--rule);
+  }
+  footer .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--rose);
+    margin: 0 auto 32px;
+  }
+  footer .footer-logo {
+    width: 180px;
+    height: auto;
+    opacity: 0.95;
+    margin: 0 auto 24px;
+    display: block;
+  }
+  footer .footer-meta {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  footer .footer-meta .dot {
+    color: var(--rose);
+    margin: 0 10px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo" aria-label="Ise Creatives — home">
+      <img src="images/ise_creatives-logo.png" alt="Ise Creatives">
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#listen">Listen</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#imagery">Imagery</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#contact">Booking</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="eyebrow">Electronic Press Kit · 2026</div>
+      <h1>ise</h1>
+      <p class="tagline">Pop &amp; R&amp;B singer-songwriter. Born in Manila, raised in California, based in Los Angeles — turning lived experience into songs you can feel from the first bar.</p>
+      <div class="meta-row">
+        <span>Pop / R&amp;B</span>
+        <span>Los Angeles</span>
+        <span>Latest: <em>Tattoo</em> · 2026</span>
+      </div>
+    </div>
+
+    <div class="hero-player">
+      <div class="player-label"><span class="dot"></span> Now Playing</div>
+      <iframe
+        data-testid="embed-iframe"
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/artist/6BIzoSKP2dHDQj9r5X9RjV?utm_source=generator"
+        width="100%"
+        height="352"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">An <em>honest voice</em> from Manila to Los Angeles.</h2>
+  <div class="bio-grid">
+    <div class="bio-facts">
+      <dl>
+        <dt>Pronounced</dt><dd>"ai-ss"</dd>
+        <dt>Born</dt><dd>Manila, Philippines</dd>
+        <dt>Based in</dt><dd>Los Angeles, CA</dd>
+        <dt>Genre</dt><dd>Pop / R&amp;B</dd>
+        <dt>For fans of</dt><dd>Ariana Grande, Jhené Aiko, Kehlani</dd>
+        <dt>Latest single</dt><dd><em>Tattoo</em> — 2026</dd>
+        <dt>Monthly listeners</dt><dd>4,200+ on Spotify</dd>
+        <dt>Management</dt><dd>Kolosseum</dd>
+      </dl>
+    </div>
+    <div>
+      <p>Born in Manila and raised in California, <strong>ise</strong> (pronounced <em>"ai-ss"</em>) is a pop and R&amp;B singer-songwriter now based in Los Angeles, sharing her lived experiences with the world through her sound.</p>
+      <p>She marked her debut with the single <em>"your loss, baby"</em> under her former name, Denise Rosete, and has since released a string of intimate, hook-driven tracks including <em>"wyd tn?"</em>, <em>"Not With You"</em>, <em>"we'd be cute."</em> and her 2026 release <em>"Tattoo"</em>.</p>
+      <p>Drawing musical inspiration from Ariana Grande, Jhené Aiko, and Kehlani, ise writes from a place of clarity and vulnerability. Through her music, she hopes to inspire other Asian-American artists to pursue their passions in the creative space.</p>
+    </div>
+  </div>
+</section>
+
+<div class="listen-wrap" id="listen">
+  <div class="inner">
+    <div class="section-label">Listen</div>
+    <h2 class="section-title">Press <em>play</em>.</h2>
+    <div class="listen-grid">
+      <div>
+        <div class="panel-title">Full catalog on Spotify</div>
+        <div class="panel-card">
+          <iframe
+            data-testid="embed-iframe"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/artist/6BIzoSKP2dHDQj9r5X9RjV?utm_source=generator"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+          </iframe>
+        </div>
+      </div>
+      <div>
+        <div class="panel-title">Selected discography</div>
+        <div class="track-list">
+          <a class="track" href="https://open.spotify.com/album/7E8HpskMyePgkD065RvhuL" target="_blank" rel="noopener">
+            <span class="t-num">01</span>
+            <span class="t-title">Tattoo</span>
+            <span class="t-meta">2026 · Latest</span>
+            <span class="t-arrow">↗</span>
+          </a>
+          <a class="track" href="https://open.spotify.com/album/7rFcFyWI6nFhDayltmCW9L" target="_blank" rel="noopener">
+            <span class="t-num">02</span>
+            <span class="t-title">wyd tn?</span>
+            <span class="t-meta">2025</span>
+            <span class="t-arrow">↗</span>
+          </a>
+          <a class="track" href="https://open.spotify.com/album/69YcBfiQjXp7g382FisQ0O" target="_blank" rel="noopener">
+            <span class="t-num">03</span>
+            <span class="t-title">Not With You</span>
+            <span class="t-meta">2024</span>
+            <span class="t-arrow">↗</span>
+          </a>
+          <a class="track" href="https://open.spotify.com/album/0isz9PsspbDOj6t7GpiKWW" target="_blank" rel="noopener">
+            <span class="t-num">04</span>
+            <span class="t-title">we'd be cute.</span>
+            <span class="t-meta">2024</span>
+            <span class="t-arrow">↗</span>
+          </a>
+          <a class="track" href="https://open.spotify.com/album/78tE2GdSieyjrdENwKmQz6" target="_blank" rel="noopener">
+            <span class="t-num">05</span>
+            <span class="t-title">Chasing Game</span>
+            <span class="t-meta">2024</span>
+            <span class="t-arrow">↗</span>
+          </a>
+          <a class="track" href="https://open.spotify.com/album/6RMn7lIvqZ60mco7GSNIrs" target="_blank" rel="noopener">
+            <span class="t-num">06</span>
+            <span class="t-title">Gimme Love</span>
+            <span class="t-meta">2022</span>
+            <span class="t-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="watch">
+  <div class="section-label">Watch</div>
+  <h2 class="section-title">Music <em>videos</em>.</h2>
+  <div class="videos-grid">
+    <div class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/EUO7wk-qMes"
+          title="ise — Tattoo (Official Music Video)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-caption">
+        <span class="v-label">Tattoo</span>
+        <span class="v-meta">2026 · Official Video</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/Ti9VmEUmoxc"
+          title="ise — wyd tn? (Official Music Video)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-caption">
+        <span class="v-label">wyd tn?</span>
+        <span class="v-meta">2025 · Official Video</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="imagery">
+  <div class="section-label">Imagery</div>
+  <h2 class="section-title">Press <em>photos</em>.</h2>
+  <div class="gallery">
+    <div class="tile" style="background-image:url('images/ise-press-1.png'); background-position: center top;"></div>
+    <div class="col">
+      <div class="tile" style="background-image:url('images/ise-hero.png');"></div>
+      <div class="tile placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<section id="press">
+  <div class="section-label">Press</div>
+  <h2 class="section-title">In the <em>conversation</em>.</h2>
+  <div class="press-grid">
+    <div class="quote">
+      <blockquote>A clear, confident voice in the new wave of Asian-American pop &amp; R&amp;B.</blockquote>
+      <cite>Placeholder — add a real quote here</cite>
+    </div>
+    <div class="quote">
+      <blockquote>Writes hooks that feel like a late-night text you didn't mean to send.</blockquote>
+      <cite>Placeholder — add a real quote here</cite>
+    </div>
+    <div class="quote">
+      <blockquote>Vulnerable, melodic, and incredibly easy to put on repeat.</blockquote>
+      <cite>Placeholder — add a real quote here</cite>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="section-label">Connect</div>
+  <h2 class="section-title">Follow <em>ise</em>.</h2>
+  <div class="socials">
+    <a href="https://open.spotify.com/artist/6BIzoSKP2dHDQj9r5X9RjV" target="_blank" rel="noopener">
+      <span class="platform">Spotify</span>
+      <span class="handle">ise</span>
+    </a>
+    <a href="https://instagram.com/isebabie" target="_blank" rel="noopener">
+      <span class="platform">Instagram</span>
+      <span class="handle">@isebabie</span>
+    </a>
+    <a href="https://tiktok.com/@isebabie" target="_blank" rel="noopener">
+      <span class="platform">TikTok</span>
+      <span class="handle">@isebabie</span>
+    </a>
+    <a href="https://twitter.com/isebabie" target="_blank" rel="noopener">
+      <span class="platform">X / Twitter</span>
+      <span class="handle">@isebabie</span>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-card">
+    <div>
+      <div class="section-label" style="color:var(--rose-soft); margin-bottom:14px;">Booking &amp; Press</div>
+      <h3>Let's <em>work</em> together.</h3>
+    </div>
+    <div>
+      <div class="detail">
+        <div class="label">Management</div>
+        <a href="mailto:management@icecreatives.com">management@icecreatives.com</a>
+      </div>
+      <div class="detail">
+        <div class="label">Press inquiries</div>
+        <a href="mailto:management@icecreatives.com?subject=Press%20Inquiry%20%E2%80%94%20ise">management@icecreatives.com</a>
+      </div>
+      <div class="detail">
+        <div class="label">Booking</div>
+        <a href="mailto:management@icecreatives.com?subject=Booking%20Inquiry%20%E2%80%94%20ise">management@icecreatives.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="divider"></div>
+  <img src="images/ise_creatives-logo.png" alt="Ise Creatives" class="footer-logo">
+  <div class="footer-meta">
+    © 2026 ise<span class="dot">◆</span>Ise Creatives LLC<span class="dot">◆</span>Managed by Kolosseum
+  </div>
+</footer>
+
+</body>
+</html>
