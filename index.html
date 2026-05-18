@@ -860,13 +860,9 @@
       top: max(env(safe-area-inset-top, 0px), 40px);
     }
     nav .nav-inner { padding: 2px 16px; overflow: visible; }
-    nav { overflow: visible; }
-    /* Logo sits ON TOP of the safe-area cover (higher z-index) so it appears
-       inside the cream bar even though the bar is only ~60px tall total. */
-    nav .logo {
-      position: relative;
-      z-index: 210;
-    }
+    /* Nav z-index must be ABOVE the safe-area cover (z-200) so the logo,
+       when pulled up with negative margin, isn't hidden behind the cover. */
+    nav { overflow: visible; z-index: 250; }
     nav .logo img {
       height: 68px;
       margin: -50px 0 -2px 0;
