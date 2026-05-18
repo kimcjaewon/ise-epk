@@ -63,14 +63,14 @@
       top: 0;
       left: 0;
       right: 0;
-      height: max(env(safe-area-inset-top, 0px), 50px);
+      height: max(env(safe-area-inset-top, 0px), 40px);
       background: #faeae6;
       z-index: 200;
       pointer-events: none;
     }
     /* Push body content down so nav sits BELOW the cover, not behind it */
     body {
-      padding-top: max(env(safe-area-inset-top, 0px), 50px);
+      padding-top: max(env(safe-area-inset-top, 0px), 40px);
     }
   }
 
@@ -857,24 +857,30 @@
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: 1px solid rgba(42, 10, 20, 0.18);
-      top: max(env(safe-area-inset-top, 0px), 50px);
+      top: max(env(safe-area-inset-top, 0px), 40px);
     }
-    nav .nav-inner { padding: 8px 18px; }
+    nav .nav-inner { padding: 4px 18px; }
     nav .logo img { height: 68px; }
 
-    /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign.
-       Y=15% raises her face higher in the frame so the text overlay doesn't cover it. */
-    .hero { min-height: 78vh; }
+    /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
+    .hero { min-height: 88vh; }
     .hero-bg {
-      background-position: 14% 15%;
+      background-position: 18% 22%;
     }
     .hero-grad {
-      /* On portrait phone, gradient should darken bottom more so text is legible */
+      /* Soft at top (let face show), heavy at bottom (text legibility) */
       background:
-        radial-gradient(ellipse at 50% 80%, rgba(214, 56, 86, 0.25) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(42, 10, 20, 0.05) 0%, rgba(42, 10, 20, 0.45) 45%, rgba(42, 10, 20, 0.92) 100%);
+        radial-gradient(ellipse at 50% 90%, rgba(214, 56, 86, 0.22) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(42, 10, 20, 0.0) 0%, rgba(42, 10, 20, 0.05) 35%, rgba(42, 10, 20, 0.65) 70%, rgba(42, 10, 20, 0.94) 100%);
     }
-    .hero-content { padding: 88px 20px 40px; gap: 28px; }
+    .hero-content {
+      /* Override the desktop grid layout — switch to flex column with content at bottom */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 20px 30px;
+      gap: 22px;
+    }
     .hero h1 { margin-bottom: 18px; }
     .hero .tagline { font-size: 15px; }
     .hero .meta-row { gap: 14px 20px; margin-top: 22px; font-size: 10px; }
