@@ -1,0 +1,16 @@
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / dependency stuff (in case you add tooling later)
+node_modules/
+.env
+.env.local
+.vercel
