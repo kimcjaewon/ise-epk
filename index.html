@@ -167,14 +167,26 @@
     color: var(--rose-soft);
     margin-bottom: 16px;
     display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .eyebrow .eyebrow-line {
+    display: inline-flex;
     align-items: center;
     gap: 12px;
   }
-  .eyebrow::before {
+  .eyebrow .eyebrow-line::before,
+  .eyebrow .eyebrow-line::after {
     content: "";
     width: 28px;
     height: 1px;
     background: var(--rose);
+  }
+  .eyebrow .eyebrow-year {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--rose-soft);
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
@@ -890,13 +902,14 @@
       gap: 22px;
       position: relative;
     }
-    /* Float the eyebrow up to the top of the hero (above the bottom-anchored content stack) */
+    /* Float the eyebrow up near the top of the hero photo, centered horizontally */
     .hero-content .eyebrow {
       position: absolute;
-      top: 90px;
-      left: 20px;
-      right: 20px;
+      top: 80px;
+      left: 0;
+      right: 0;
       margin: 0;
+      align-items: center;   /* centers the two stacked rows */
     }
     .hero h1 { margin-bottom: 18px; }
     .hero .tagline { font-size: 15px; }
@@ -1017,7 +1030,10 @@
   <div class="hero-grad"></div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="eyebrow">Electronic Press Kit · 2026</div>
+      <div class="eyebrow">
+        <span class="eyebrow-line">Electronic Press Kit</span>
+        <span class="eyebrow-year">2026</span>
+      </div>
       <h1>ise</h1>
       <p class="tagline">Pop &amp; R&amp;B singer-songwriter. Born in Manila, raised in California, based in Los Angeles — turning lived experience into songs you can feel from the first bar.</p>
       <div class="meta-row">
