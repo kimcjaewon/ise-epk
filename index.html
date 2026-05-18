@@ -42,7 +42,7 @@
   }
 
   /* subtle film-grain texture for analog R&B feel */
-  body::before {
+  body::after {
     content: "";
     position: fixed;
     inset: 0;
@@ -51,6 +51,18 @@
     z-index: 100;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     mix-blend-mode: multiply;
+  }
+  /* Hard cover for the iOS safe area / Dynamic Island so the bar feels truly flush */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top, 0px);
+    background: #faeae6;
+    z-index: 200;
+    pointer-events: none;
   }
 
   /* ---------- Top nav ---------- */
@@ -77,7 +89,7 @@
     text-decoration: none;
   }
   nav .logo img {
-    height: 64px;
+    height: 86px;          /* mid-size between contained 64 and overflowing 110 */
     width: auto;
     display: block;
   }
@@ -772,34 +784,21 @@
 
   /* ---------- Mobile overrides ---------- */
   @media (max-width: 760px) {
-    /* Nav: solid bg + safe-area padding so it sits flush to the top of the screen */
+    /* Nav: solid bg, sits flush with the safe-area cover from body::before */
     nav {
-      background: #faeae6;             /* solid, no translucency on mobile to avoid iOS bugs */
+      background: #faeae6;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: 1px solid rgba(42, 10, 20, 0.18);
-      padding-top: constant(safe-area-inset-top);  /* iOS 11.0-11.2 fallback */
-      padding-top: env(safe-area-inset-top);       /* modern iOS */
     }
-    /* Belt-and-suspenders: fixed bar that always covers the Dynamic Island area */
-    nav::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: env(safe-area-inset-top, 0px);
-      background: #faeae6;
-      z-index: 51;
-      pointer-events: none;
-    }
-    nav .nav-inner { padding: 8px 18px; }
-    nav .logo img { height: 48px; }
+    nav .nav-inner { padding: 10px 18px; }
+    nav .logo img { height: 68px; }   /* mid-size — between contained 48 and overflowing 92 */
 
-    /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign */
+    /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign.
+       Y=15% raises her face higher in the frame so the text overlay doesn't cover it. */
     .hero { min-height: 78vh; }
     .hero-bg {
-      background-position: 14% 32%;
+      background-position: 14% 15%;
     }
     .hero-grad {
       /* On portrait phone, gradient should darken bottom more so text is legible */
