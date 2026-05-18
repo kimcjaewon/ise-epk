@@ -142,14 +142,18 @@
     overflow: hidden;
     background: var(--ink);
   }
-  /* Hero video background (autoplay, looped, muted, no audio) */
+  /* Hero video background (autoplay, looped, muted, no audio).
+     The video has subtitles baked in around y=80%. We scale up from the top
+     so the lower-subtitle region is cropped off-screen below the hero text. */
   .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;   /* slight upward bias so the neon sign stays in frame on desktop */
+    object-position: center 25%;
+    transform: scale(1.2);
+    transform-origin: center top;
     filter: saturate(1.05) contrast(1.02);
     pointer-events: none;
   }
@@ -179,7 +183,7 @@
     font-size: 11px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--rose-soft);
+    color: #faeae6;        /* cream — high contrast against pink video bg */
     margin-bottom: 16px;
     display: inline-flex;
     flex-direction: column;
@@ -201,7 +205,7 @@
   .eyebrow .eyebrow-year {
     font-size: 10px;
     letter-spacing: 0.35em;
-    color: var(--rose-soft);
+    color: #faeae6;
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
@@ -1141,7 +1145,9 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      object-position: center center;   /* full vertical video fits portrait phones perfectly */
+      object-position: center top;
+      transform: scale(1.4);
+      transform-origin: center top;
     }
     .hero-grad {
       /* Soft at top (let face show), heavy at bottom (text legibility) */
