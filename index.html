@@ -861,11 +861,15 @@
     }
     nav .nav-inner { padding: 2px 16px; overflow: visible; }
     nav { overflow: visible; }
-    /* Logo stays 68px visually but only takes ~13px of layout — the rest overflows
-       downward into the hero photo (transparent PNG floats over the image). */
+    /* Logo sits ON TOP of the safe-area cover (higher z-index) so it appears
+       inside the cream bar even though the bar is only ~60px tall total. */
+    nav .logo {
+      position: relative;
+      z-index: 210;
+    }
     nav .logo img {
       height: 68px;
-      margin: 0 0 -55px 0;
+      margin: -50px 0 -2px 0;
     }
 
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
