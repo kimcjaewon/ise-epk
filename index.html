@@ -143,17 +143,17 @@
     background: var(--ink);
   }
   /* Hero video background (autoplay, looped, muted, no audio).
-     The video has subtitles baked in around y=80%. We scale up from the top
-     so the lower-subtitle region is cropped off-screen below the hero text. */
+     Scale from the BOTTOM so the upper portion (where the baked-in subtitle
+     lives) crops off-screen above, leaving the eyebrow caption space clean. */
   .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
-    transform: scale(1.2);
-    transform-origin: center top;
+    object-position: center bottom;
+    transform: scale(1.25);
+    transform-origin: center bottom;
     filter: saturate(1.05) contrast(1.02);
     pointer-events: none;
   }
@@ -1145,15 +1145,19 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      object-position: center top;
-      transform: scale(1.4);
-      transform-origin: center top;
+      transform: scale(1.35);   /* slightly more crop on mobile portrait */
     }
     .hero-grad {
-      /* Soft at top (let face show), heavy at bottom (text legibility) */
+      /* Soft at top (let face/neon show), HARD darkening over the lower half to
+         bury the video's baked-in subtitles behind the bio text overlay */
       background:
         radial-gradient(ellipse at 50% 90%, rgba(214, 56, 86, 0.22) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(42, 10, 20, 0.0) 0%, rgba(42, 10, 20, 0.05) 35%, rgba(42, 10, 20, 0.65) 70%, rgba(42, 10, 20, 0.94) 100%);
+        linear-gradient(180deg,
+          rgba(42, 10, 20, 0.0) 0%,
+          rgba(42, 10, 20, 0.0) 30%,
+          rgba(42, 10, 20, 0.75) 50%,
+          rgba(42, 10, 20, 0.95) 70%,
+          rgba(42, 10, 20, 0.98) 100%);
     }
     .hero-content {
       /* Override the desktop grid layout — switch to flex column with content at bottom.
