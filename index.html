@@ -77,12 +77,10 @@
     text-decoration: none;
   }
   nav .logo img {
-    height: 110px;       /* visual size — big and readable */
+    height: 64px;
     width: auto;
     display: block;
-    margin: -30px 0;     /* pull layout back to 50px so the bar doesn't grow */
   }
-  nav, nav .nav-inner { overflow: visible; }  /* let the logo extend past the bar */
   nav ul {
     list-style: none;
     display: flex;
@@ -659,17 +657,144 @@
     .contact-card h3 { font-size: 36px; }
   }
 
+  /* ---------- Easter egg: "where it all started" ---------- */
+  .easter-trigger {
+    display: block;
+    margin: 36px auto 0;
+    background: none;
+    border: none;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--rose-deep);
+    opacity: 0.42;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    padding: 10px 14px;
+    transition: opacity 0.4s ease, color 0.3s ease, letter-spacing 0.4s ease;
+    text-align: center;
+    font-weight: 500;
+  }
+  .easter-trigger:hover {
+    opacity: 1;
+    color: var(--rose);
+    letter-spacing: 0.08em;
+  }
+
+  .easter-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: easterFade 0.35s ease;
+  }
+  .easter-modal[hidden] { display: none; }
+  @keyframes easterFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .easter-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(142, 23, 54, 0.45) 0%, rgba(20, 5, 12, 0.95) 70%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+  }
+  .easter-modal-content {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    width: 92%;
+    padding: 20px;
+    text-align: center;
+  }
+  .easter-modal-close {
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: none;
+    border: 0;
+    color: #faeae6;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 8px 14px;
+    line-height: 1;
+  }
+  .easter-modal-close:hover { opacity: 1; transform: scale(1.1); }
+  .easter-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 100px -20px rgba(142, 23, 54, 0.7),
+      0 0 0 1px rgba(244, 168, 180, 0.2) inset;
+  }
+  .easter-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .easter-caption {
+    margin-top: 22px;
+    color: #faeae6;
+  }
+  .easter-caption .line {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--rose-soft);
+    margin-bottom: 6px;
+  }
+  .easter-caption .sub {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(250, 234, 230, 0.6);
+    font-weight: 500;
+  }
+  @media (max-width: 760px) {
+    .easter-trigger { font-size: 14px; margin-top: 28px; }
+    .easter-modal-content { padding: 16px; }
+    .easter-caption .line { font-size: 18px; }
+    .easter-caption .sub { font-size: 10px; }
+  }
+
   /* ---------- Mobile overrides ---------- */
   @media (max-width: 760px) {
-    /* Nav: extend behind iOS status bar so it feels truly flush to top */
+    /* Nav: solid bg + safe-area padding so it sits flush to the top of the screen */
     nav {
-      background: rgba(250, 234, 230, 0.96);
+      background: #faeae6;             /* solid, no translucency on mobile to avoid iOS bugs */
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border-bottom: 1px solid rgba(42, 10, 20, 0.18);
-      padding-top: env(safe-area-inset-top);
+      padding-top: constant(safe-area-inset-top);  /* iOS 11.0-11.2 fallback */
+      padding-top: env(safe-area-inset-top);       /* modern iOS */
     }
-    nav .nav-inner { padding: 10px 20px; }
-    /* Keep the bar the same height — just make the logo visually larger */
-    nav .logo img { height: 92px; margin: -28px 0; }
+    /* Belt-and-suspenders: fixed bar that always covers the Dynamic Island area */
+    nav::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: env(safe-area-inset-top, 0px);
+      background: #faeae6;
+      z-index: 51;
+      pointer-events: none;
+    }
+    nav .nav-inner { padding: 8px 18px; }
+    nav .logo img { height: 48px; }
 
     /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign */
     .hero { min-height: 78vh; }
@@ -949,6 +1074,10 @@
       </div>
     </div>
   </div>
+
+  <button class="easter-trigger" id="easterTrigger" aria-label="Watch first performance">
+    where it all started.
+  </button>
 </section>
 
 <section id="imagery">
@@ -956,10 +1085,7 @@
   <h2 class="section-title">Press <em>photos</em>.</h2>
   <div class="gallery">
     <div class="tile" style="background-image:url('images/ise-press-1.png'); background-position: center top;"></div>
-    <div class="col">
-      <div class="tile" style="background-image:url('images/ise-hero.png');"></div>
-      <div class="tile placeholder"></div>
-    </div>
+    <div class="tile" style="background-image:url('images/ise-hero.png');"></div>
   </div>
 </section>
 
@@ -1016,6 +1142,53 @@
     </div>
   </div>
 </section>
+
+<!-- Easter egg modal -->
+<div class="easter-modal" id="easterModal" hidden role="dialog" aria-modal="true" aria-labelledby="easterCaption">
+  <div class="easter-modal-backdrop" data-easter-close></div>
+  <div class="easter-modal-content">
+    <button class="easter-modal-close" data-easter-close aria-label="Close">×</button>
+    <div class="easter-video">
+      <iframe
+        id="easterIframe"
+        src=""
+        title="ise — first performance, age 10"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="easter-caption" id="easterCaption">
+      <span class="line">where it all started.</span>
+      <span class="sub">ise · age 10 · first performance</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const trigger = document.getElementById('easterTrigger');
+    const modal = document.getElementById('easterModal');
+    const iframe = document.getElementById('easterIframe');
+    const ytSrc = 'https://www.youtube.com/embed/RyuVwYaYsCg?autoplay=1&rel=0';
+
+    function openModal() {
+      iframe.src = ytSrc;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      iframe.src = '';  // hard-stop the video
+    }
+
+    trigger.addEventListener('click', openModal);
+    modal.querySelectorAll('[data-easter-close]').forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+  })();
+</script>
 
 <footer>
   <div class="divider"></div>
