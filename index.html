@@ -657,6 +657,86 @@
     .contact-card h3 { font-size: 36px; }
   }
 
+  /* ---------- Mobile overrides ---------- */
+  @media (max-width: 760px) {
+    /* Nav: smaller logo, denser background, more contrast against page */
+    nav {
+      background: rgba(250, 234, 230, 0.96);
+      border-bottom: 1px solid rgba(42, 10, 20, 0.18);
+    }
+    nav .nav-inner { padding: 10px 20px; }
+    nav .logo img { height: 46px; }
+
+    /* Hero: shorter, photo positioned to keep Ise in frame on portrait */
+    .hero { min-height: 78vh; }
+    .hero-bg {
+      background-position: 30% 35%;
+    }
+    .hero-grad {
+      /* On portrait phone, gradient should darken bottom more so text is legible */
+      background:
+        radial-gradient(ellipse at 50% 80%, rgba(214, 56, 86, 0.25) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(42, 10, 20, 0.05) 0%, rgba(42, 10, 20, 0.45) 45%, rgba(42, 10, 20, 0.92) 100%);
+    }
+    .hero-content { padding: 88px 20px 40px; gap: 28px; }
+    .hero h1 { margin-bottom: 18px; }
+    .hero .tagline { font-size: 15px; }
+    .hero .meta-row { gap: 14px 20px; margin-top: 22px; font-size: 10px; }
+    .hero-player { padding: 16px; }
+    .hero-player .player-label { font-size: 10px; margin-bottom: 10px; }
+
+    /* Sections: less vertical padding, narrower horizontal */
+    section { padding: 64px 20px; }
+    .listen-wrap { padding: 64px 20px; }
+    .section-title { margin-bottom: 28px; }
+    .section-label { margin-bottom: 10px; }
+
+    /* Bio: tighter spacing */
+    .bio-grid { gap: 32px; }
+    .bio-facts { padding: 22px; }
+    .bio-facts dl { grid-template-columns: 1fr 1.6fr; gap: 10px 14px; }
+    .bio-grid p { font-size: 16px; }
+
+    /* Listen: tighter */
+    .listen-grid { gap: 22px; }
+    .panel-card { padding: 18px; }
+    .listen-grid .panel-title { font-size: 22px; margin-bottom: 12px; }
+    .track { padding: 14px 18px; }
+    .track .t-title { font-size: 18px; }
+    .track .t-meta { font-size: 10px; }
+    .track:hover { padding-left: 18px; }  /* disable shift on mobile (no hover anyway) */
+
+    /* Videos: tighter */
+    .videos-grid { gap: 16px; }
+    .video-caption { padding: 14px 18px; }
+    .video-caption .v-label { font-size: 17px; }
+
+    /* Gallery: tighter */
+    .gallery, .gallery .col { gap: 10px; }
+
+    /* Press: tighter quotes */
+    .press-grid { gap: 24px; }
+    .quote { padding-left: 22px; }
+    .quote blockquote { font-size: 18px; }
+
+    /* Socials: tighter cards, smaller arrow */
+    .socials { gap: 10px; }
+    .socials a { padding: 22px 20px; }
+    .socials a::after { top: 18px; right: 18px; font-size: 16px; }
+    .socials .handle { font-size: 22px; }
+
+    /* Contact card */
+    .contact-card { padding: 40px 24px; gap: 24px; }
+    .contact-card h3 { font-size: 32px; }
+    .contact-card a { font-size: 16px; }
+
+    /* Footer */
+    footer { padding: 50px 20px 60px; }
+    footer .footer-logo { width: 140px; }
+    footer .footer-meta { font-size: 10px; letter-spacing: 0.18em; }
+    footer .footer-meta .dot { margin: 0 6px; }
+  }
+
   /* ---------- Footer ---------- */
   footer {
     text-align: center;
