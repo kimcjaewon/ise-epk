@@ -4,11 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>ise — Electronic Press Kit</title>
-<meta name="description" content="ise (pronounced 'ice') — pop/R&B singer-songwriter based in LA. Born in Manila, raised in California. Official EPK." />
-<meta property="og:title" content="ise — EPK" />
-<meta property="og:description" content="Pop/R&B singer-songwriter. Born in Manila, raised in California, based in LA." />
-<meta property="og:image" content="https://i.scdn.co/image/ab6761610000e5eb5c8d93c1d0baa18eb0198207" />
+<meta name="description" content="Tattoo artist by trade, music artist at heart. ise (pronounced 'ai-ss') is a Filipino-American pop and R&B singer-songwriter based in Los Angeles." />
+
+<!-- Open Graph: iMessage, Slack, Facebook, LinkedIn, etc. -->
+<meta property="og:title" content="ise — singer-songwriter & tattoo artist" />
+<meta property="og:description" content="Tattoo artist by trade, music artist at heart. Filipino-American pop and R&B from Los Angeles." />
+<meta property="og:image" content="https://isecreatives.com/images/social-share.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="ise creatives logo" />
+<meta property="og:url" content="https://isecreatives.com" />
 <meta property="og:type" content="profile" />
+<meta property="og:site_name" content="ise" />
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ise — singer-songwriter & tattoo artist" />
+<meta name="twitter:description" content="Tattoo artist by trade, music artist at heart. Filipino-American pop and R&B from Los Angeles." />
+<meta name="twitter:image" content="https://isecreatives.com/images/social-share.jpg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,14 +142,16 @@
     overflow: hidden;
     background: var(--ink);
   }
+  /* Hero video background (autoplay, looped, muted, no audio) */
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('images/ise-hero.png');
-    background-size: cover;
-    /* Ise is on the LEFT third of the photo — anchor the crop there so she's visible */
-    background-position: 18% center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;   /* slight upward bias so the neon sign stays in frame on desktop */
     filter: saturate(1.05) contrast(1.02);
+    pointer-events: none;
   }
   .hero-grad {
     position: absolute;
@@ -1126,7 +1141,7 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      background-position: 18% 22%;
+      object-position: center center;   /* full vertical video fits portrait phones perfectly */
     }
     .hero-grad {
       /* Soft at top (let face show), heavy at bottom (text legibility) */
@@ -1271,7 +1286,13 @@
 </nav>
 
 <header id="top" class="hero">
-  <div class="hero-bg"></div>
+  <video
+    class="hero-bg"
+    autoplay muted loop playsinline preload="auto"
+    poster="images/wydtn-video-hero-poster.jpg"
+    aria-hidden="true">
+    <source src="images/wydtn-video-hero.mp4" type="video/mp4">
+  </video>
   <div class="hero-grad"></div>
   <div class="hero-content">
     <div class="hero-text">
