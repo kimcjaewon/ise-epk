@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>ise — Electronic Press Kit</title>
 <meta name="description" content="ise (pronounced 'ice') — pop/R&B singer-songwriter based in LA. Born in Manila, raised in California. Official EPK." />
 <meta property="og:title" content="ise — EPK" />
@@ -77,10 +77,12 @@
     text-decoration: none;
   }
   nav .logo img {
-    height: 68px;
+    height: 110px;       /* visual size — big and readable */
     width: auto;
     display: block;
+    margin: -30px 0;     /* pull layout back to 50px so the bar doesn't grow */
   }
+  nav, nav .nav-inner { overflow: visible; }  /* let the logo extend past the bar */
   nav ul {
     list-style: none;
     display: flex;
@@ -659,18 +661,20 @@
 
   /* ---------- Mobile overrides ---------- */
   @media (max-width: 760px) {
-    /* Nav: smaller logo, denser background, more contrast against page */
+    /* Nav: extend behind iOS status bar so it feels truly flush to top */
     nav {
       background: rgba(250, 234, 230, 0.96);
       border-bottom: 1px solid rgba(42, 10, 20, 0.18);
+      padding-top: env(safe-area-inset-top);
     }
     nav .nav-inner { padding: 10px 20px; }
-    nav .logo img { height: 46px; }
+    /* Keep the bar the same height — just make the logo visually larger */
+    nav .logo img { height: 92px; margin: -28px 0; }
 
-    /* Hero: shorter, photo positioned to keep Ise in frame on portrait */
+    /* Hero: shorter, anchored to Ise's face with a sliver of the menu sign */
     .hero { min-height: 78vh; }
     .hero-bg {
-      background-position: 30% 35%;
+      background-position: 14% 32%;
     }
     .hero-grad {
       /* On portrait phone, gradient should darken bottom more so text is legible */
@@ -711,8 +715,9 @@
     .video-caption { padding: 14px 18px; }
     .video-caption .v-label { font-size: 17px; }
 
-    /* Gallery: tighter */
+    /* Gallery: tighter + give secondary tiles a real aspect so they don't collapse to lines */
     .gallery, .gallery .col { gap: 10px; }
+    .gallery .col .tile { aspect-ratio: 1 / 1; }
 
     /* Press: tighter quotes */
     .press-grid { gap: 24px; }
@@ -856,12 +861,13 @@
           <iframe
             data-testid="embed-iframe"
             style="border-radius:12px"
-            src="https://open.spotify.com/embed/artist/6BIzoSKP2dHDQj9r5X9RjV?utm_source=generator"
+            src="https://open.spotify.com/embed/artist/6BIzoSKP2dHDQj9r5X9RjV?utm_source=generator&theme=0"
             width="100%"
-            height="352"
+            height="152"
             frameborder="0"
             allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
           </iframe>
         </div>
       </div>
@@ -963,15 +969,12 @@
   <div class="press-grid">
     <div class="quote">
       <blockquote>A clear, confident voice in the new wave of Asian-American pop &amp; R&amp;B.</blockquote>
-      <cite>Placeholder — add a real quote here</cite>
     </div>
     <div class="quote">
       <blockquote>Writes hooks that feel like a late-night text you didn't mean to send.</blockquote>
-      <cite>Placeholder — add a real quote here</cite>
     </div>
     <div class="quote">
       <blockquote>Vulnerable, melodic, and incredibly easy to put on repeat.</blockquote>
-      <cite>Placeholder — add a real quote here</cite>
     </div>
   </div>
 </section>
@@ -1007,16 +1010,8 @@
     </div>
     <div>
       <div class="detail">
-        <div class="label">Management</div>
-        <a href="mailto:management@icecreatives.com">management@icecreatives.com</a>
-      </div>
-      <div class="detail">
-        <div class="label">Press inquiries</div>
-        <a href="mailto:management@icecreatives.com?subject=Press%20Inquiry%20%E2%80%94%20ise">management@icecreatives.com</a>
-      </div>
-      <div class="detail">
-        <div class="label">Booking</div>
-        <a href="mailto:management@icecreatives.com?subject=Booking%20Inquiry%20%E2%80%94%20ise">management@icecreatives.com</a>
+        <div class="label">Booking &amp; Press</div>
+        <a href="mailto:management@icecreatives.com?subject=Inquiry%20%E2%80%94%20ise">management@icecreatives.com</a>
       </div>
     </div>
   </div>
