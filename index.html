@@ -258,7 +258,6 @@
     object-fit: cover;
     object-position: center 25%;
     filter: saturate(1.05) contrast(1.02);
-    pointer-events: none;
   }
   .hero-grad {
     position: absolute;
@@ -1426,7 +1425,10 @@
 <header id="top" class="hero">
   <video
     class="hero-bg"
-    autoplay muted loop playsinline preload="auto"
+    id="heroVideo"
+    autoplay muted loop playsinline webkit-playsinline
+    preload="auto"
+    disablepictureinpicture disableremoteplayback
     poster="images/wydtn-video-hero-poster.jpg"
     aria-hidden="true">
     <source src="images/wydtn-video-hero.mp4" type="video/mp4">
@@ -1777,6 +1779,28 @@
 </div>
 
 <script>
+  /* ---- Hero video: force autoplay on iOS Safari quirks ---- */
+  (function() {
+    const video = document.getElementById('heroVideo');
+    if (!video) return;
+    /* Make sure attributes are set even if HTML attributes are stripped */
+    video.muted = true;
+    video.playsInline = true;
+    /* Try playing immediately */
+    const tryPlay = () => video.play().catch(() => {});
+    tryPlay();
+    /* Also retry after metadata loads (iOS may need this) */
+    video.addEventListener('loadedmetadata', tryPlay);
+    /* Fallback: first user touch/click anywhere on the page kicks it off */
+    const userKickoff = () => {
+      tryPlay();
+      document.removeEventListener('touchstart', userKickoff);
+      document.removeEventListener('click', userKickoff);
+    };
+    document.addEventListener('touchstart', userKickoff, { passive: true, once: true });
+    document.addEventListener('click', userKickoff, { once: true });
+  })();
+
   /* ---- Mobile hamburger menu ---- */
   (function() {
     const toggle = document.getElementById('navToggle');
