@@ -135,6 +135,108 @@
 
   @media (max-width: 720px) { nav ul { display: none; } }
 
+  /* ---------- Hamburger button + mobile menu overlay ---------- */
+  .nav-toggle { display: none; }
+
+  @media (max-width: 760px) {
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 260;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+    .nav-toggle.is-open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+
+  .mobile-menu { display: none; }
+
+  @media (max-width: 760px) {
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 240;     /* below nav (250) so the hamburger/X stays clickable */
+      display: block;
+      background: rgba(250, 234, 230, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .mobile-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-menu-inner {
+      padding-top: calc(max(env(safe-area-inset-top, 0px), 40px) + 80px);
+      padding-bottom: 40px;
+      padding-left: 32px;
+      padding-right: 32px;
+      height: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 32px;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .mobile-menu a:active { color: var(--rose); transform: translateX(4px); }
+    .mobile-menu a .num {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--rose);
+      font-weight: 600;
+      min-width: 26px;
+    }
+    .mobile-menu .menu-tagline {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(42, 10, 20, 0.14);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+  }
+
   /* ---------- Hero ---------- */
   .hero {
     position: relative;
@@ -143,17 +245,15 @@
     background: var(--ink);
   }
   /* Hero video background (autoplay, looped, muted, no audio).
-     Scale from the BOTTOM so the upper portion (where the baked-in subtitle
-     lives) crops off-screen above, leaving the eyebrow caption space clean. */
+     Desktop: show the upper portion (face + neon). Mobile: scale from bottom
+     so the baked-in upper subtitle crops off-screen (overridden in @media). */
   .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center bottom;
-    transform: scale(1.25);
-    transform-origin: center bottom;
+    object-position: center 25%;
     filter: saturate(1.05) contrast(1.02);
     pointer-events: none;
   }
@@ -1145,7 +1245,10 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      transform: scale(1.35);   /* slightly more crop on mobile portrait */
+      /* Mobile: scale from bottom so upper subtitle crops off the top */
+      object-position: center bottom;
+      transform: scale(1.35);
+      transform-origin: center bottom;
     }
     .hero-grad {
       /* Soft at top (let face/neon show), HARD darkening over the lower half to
@@ -1292,8 +1395,30 @@
       <li><a href="#press">Press</a></li>
       <li><a href="#contact">Booking</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay (hamburger target) -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-menu-inner">
+    <ul>
+      <li><a href="#about"><span class="num">01</span> About</a></li>
+      <li><a href="#listen"><span class="num">02</span> Listen</a></li>
+      <li><a href="#watch"><span class="num">03</span> Watch</a></li>
+      <li><a href="#diml"><span class="num">04</span> Day in the Life</a></li>
+      <li><a href="#studio"><span class="num">05</span> Studio</a></li>
+      <li><a href="#imagery"><span class="num">06</span> Imagery</a></li>
+      <li><a href="#press"><span class="num">07</span> Press</a></li>
+      <li><a href="#contact"><span class="num">08</span> Booking &amp; Press</a></li>
+    </ul>
+    <div class="menu-tagline">ise · est 2026 · Los Angeles</div>
+  </div>
+</div>
 
 <header id="top" class="hero">
   <video
@@ -1649,6 +1774,38 @@
 </div>
 
 <script>
+  /* ---- Mobile hamburger menu ---- */
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      toggle.classList.add('is-open');
+      toggle.setAttribute('aria-label', 'Close menu');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => {
+      if (toggle.classList.contains('is-open')) closeMenu();
+      else openMenu();
+    });
+    /* Tap a link → close menu (the anchor scroll still happens) */
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    /* Esc closes */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+    });
+  })();
+
   /* ---- Gallery carousel: tap a thumb to swap the main image ---- */
   (function() {
     const main = document.getElementById('galleryMain');
