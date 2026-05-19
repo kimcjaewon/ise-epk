@@ -14,3 +14,18 @@ node_modules/
 .env
 .env.local
 .vercel
+
+# Internal working files — never deploy to public site
+*.docx
+*.xlsx
+Meeting Agenda*
+Meeting Prep*
+Meeting_Prep*
+Content Bridge Plan.md
+DEPLOY-TO-VERCEL.md
+DENISE_*
+Barter Agreement*
+Dancer Payment*
+Engagement Letter*
+Kolosseum Invoice*
+images/wydtn-video-hero.mov
