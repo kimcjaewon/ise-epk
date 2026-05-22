@@ -44,6 +44,13 @@
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  /* Anchor-link offset so sticky nav doesn't cover the section's top edge */
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  section[id], header[id] { scroll-margin-top: 90px; }
+  @media (max-width: 760px) {
+    html { scroll-padding-top: 70px; }
+    section[id], header[id] { scroll-margin-top: 70px; }
+  }
   body {
     background: var(--bg);
     color: var(--ink);
@@ -502,6 +509,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 32px;
     align-items: start;
+  }
+  .listen-grid--single {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
   }
   .listen-grid .panel-title {
     font-family: 'Playfair Display', serif;
@@ -1009,6 +1021,12 @@
     color: var(--ink-soft);
     font-weight: 500;
   }
+  .quote cite a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .quote cite a:hover { color: var(--rose); }
 
   /* ---------- Connect ---------- */
   .socials {
@@ -1343,6 +1361,39 @@
     footer .footer-meta .dot { margin: 0 6px; }
   }
 
+  /* Contact section enhancements (post-merge) */
+  .primary-flag {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .contact-card h3 br { display: block; }
+  .contact-card .primary-mail {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .contact-card .detail-sub {
+    font-size: 12px;
+    color: rgba(250, 234, 230, 0.6);
+    margin-top: 14px;
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  .contact-socials {
+    margin-top: 56px;
+  }
+  .contact-socials-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
   /* ---------- Footer ---------- */
   footer {
     text-align: center;
@@ -1395,7 +1446,7 @@
       <li><a href="#studio">Studio</a></li>
       <li><a href="#imagery">Imagery</a></li>
       <li><a href="#press">Press</a></li>
-      <li><a href="#contact">Booking</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
@@ -1416,7 +1467,7 @@
       <li><a href="#studio"><span class="num">05</span> Book your tattoo appointment</a></li>
       <li><a href="#imagery"><span class="num">06</span> Imagery</a></li>
       <li><a href="#press"><span class="num">07</span> Press</a></li>
-      <li><a href="#contact"><span class="num">08</span> Booking &amp; Press</a></li>
+      <li><a href="#contact"><span class="num">08</span> Contact</a></li>
     </ul>
     <div class="menu-tagline">ise · est 2026 · Los Angeles</div>
   </div>
@@ -1495,23 +1546,7 @@
   <div class="inner">
     <div class="section-label">Listen</div>
     <h2 class="section-title">Press <em>play</em>.</h2>
-    <div class="listen-grid">
-      <div>
-        <div class="panel-title">Full catalog on Spotify</div>
-        <div class="panel-card">
-          <iframe
-            data-testid="embed-iframe"
-            style="border-radius:12px"
-            src="https://open.spotify.com/embed/artist/6BIzoSKP2dHDQj9r5X9RjV?utm_source=generator&theme=0"
-            width="100%"
-            height="152"
-            frameborder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
+    <div class="listen-grid listen-grid--single">
       <div>
         <div class="panel-title">Selected discography</div>
         <div class="track-list">
@@ -1708,51 +1743,59 @@
   <h2 class="section-title">In the <em>conversation</em>.</h2>
   <div class="press-grid">
     <div class="quote">
-      <blockquote>A clear, confident voice in the new wave of Asian-American pop &amp; R&amp;B.</blockquote>
+      <blockquote>A stellar job of establishing her bop-heavy brand of engaging pop-tinged R&amp;B.</blockquote>
+      <cite><a href="https://cloutcloutclout.com/features/who-tf/ise/" target="_blank" rel="noopener">Clout · "Who TF is ise?" ↗</a></cite>
     </div>
     <div class="quote">
-      <blockquote>Writes hooks that feel like a late-night text you didn't mean to send.</blockquote>
+      <blockquote>Here to put you in your feels — in the best way possible.</blockquote>
+      <cite><a href="https://www.finessed.media/ive-got-the-aux/ise" target="_blank" rel="noopener">Finessed Media · "Getting Icy with ise" ↗</a></cite>
     </div>
     <div class="quote">
-      <blockquote>Vulnerable, melodic, and incredibly easy to put on repeat.</blockquote>
+      <blockquote>Hoping to inspire other Asian Americans in the creative space.</blockquote>
+      <cite><a href="https://www.silvergunrecords.com/the-silver-review-music-blog/2022/7/8/artist-interview-ise" target="_blank" rel="noopener">Silver Gun Records · The Silver Review ↗</a></cite>
     </div>
-  </div>
-</section>
-
-<section id="connect">
-  <div class="section-label">Connect</div>
-  <h2 class="section-title">Follow <em>ise</em>.</h2>
-  <div class="socials">
-    <a href="https://open.spotify.com/artist/6BIzoSKP2dHDQj9r5X9RjV" target="_blank" rel="noopener">
-      <span class="platform">Spotify</span>
-      <span class="handle">ise</span>
-    </a>
-    <a href="https://instagram.com/isebabie" target="_blank" rel="noopener">
-      <span class="platform">Instagram</span>
-      <span class="handle">@isebabie</span>
-    </a>
-    <a href="https://tiktok.com/@isebabie" target="_blank" rel="noopener">
-      <span class="platform">TikTok</span>
-      <span class="handle">@isebabie</span>
-    </a>
-    <a href="https://twitter.com/isebabie" target="_blank" rel="noopener">
-      <span class="platform">X / Twitter</span>
-      <span class="handle">@isebabie</span>
-    </a>
   </div>
 </section>
 
 <section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's <em>work</em> together.</h2>
+
+  <!-- Primary CTA: what we want visitors to do -->
   <div class="contact-card">
     <div>
-      <div class="section-label" style="color:var(--rose-soft); margin-bottom:14px;">Booking &amp; Press</div>
-      <h3>Let's <em>work</em> together.</h3>
+      <div class="primary-flag">↘  Start here</div>
+      <h3>Email for music management,<br>press &amp; bookings.</h3>
     </div>
     <div>
       <div class="detail">
-        <div class="label">Booking &amp; Press</div>
-        <a href="mailto:management@isecreatives.com?subject=Inquiry%20%E2%80%94%20ise">management@isecreatives.com</a>
+        <div class="label">Management</div>
+        <a class="primary-mail" href="mailto:management@isecreatives.com?subject=Inquiry%20%E2%80%94%20ise">management@isecreatives.com</a>
       </div>
+      <div class="detail-sub">For tattoo bookings, use the form linked in the Studio section above.</div>
+    </div>
+  </div>
+
+  <!-- Secondary: socials grid -->
+  <div class="contact-socials">
+    <div class="contact-socials-label">Or follow along</div>
+    <div class="socials">
+      <a href="https://open.spotify.com/artist/6BIzoSKP2dHDQj9r5X9RjV" target="_blank" rel="noopener">
+        <span class="platform">Spotify</span>
+        <span class="handle">ise</span>
+      </a>
+      <a href="https://instagram.com/isebabie" target="_blank" rel="noopener">
+        <span class="platform">Instagram</span>
+        <span class="handle">@isebabie</span>
+      </a>
+      <a href="https://tiktok.com/@isebabie" target="_blank" rel="noopener">
+        <span class="platform">TikTok</span>
+        <span class="handle">@isebabie</span>
+      </a>
+      <a href="https://twitter.com/isebabie" target="_blank" rel="noopener">
+        <span class="platform">X / Twitter</span>
+        <span class="handle">@isebabie</span>
+      </a>
     </div>
   </div>
 </section>
