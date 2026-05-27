@@ -1265,22 +1265,17 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      /* Mobile: scale from bottom so upper subtitle crops off the top */
-      object-position: center bottom;
-      transform: scale(1.35);
-      transform-origin: center bottom;
+      object-position: center 35%;   /* clean video — just frame her face/neon */
     }
     .hero-grad {
-      /* Soft at top (let face/neon show), HARD darkening over the lower half to
-         bury the video's baked-in subtitles behind the bio text overlay */
+      /* Soft at top (let face/neon show), gradual darkening toward the bottom for text legibility */
       background:
         radial-gradient(ellipse at 50% 90%, rgba(214, 56, 86, 0.22) 0%, transparent 60%),
         linear-gradient(180deg,
           rgba(42, 10, 20, 0.0) 0%,
-          rgba(42, 10, 20, 0.0) 30%,
-          rgba(42, 10, 20, 0.75) 50%,
-          rgba(42, 10, 20, 0.95) 70%,
-          rgba(42, 10, 20, 0.98) 100%);
+          rgba(42, 10, 20, 0.1) 40%,
+          rgba(42, 10, 20, 0.6) 70%,
+          rgba(42, 10, 20, 0.92) 100%);
     }
     .hero-content {
       /* Override the desktop grid layout — switch to flex column with content at bottom.
@@ -1480,9 +1475,9 @@
     autoplay muted loop playsinline webkit-playsinline
     preload="auto"
     disablepictureinpicture disableremoteplayback
-    poster="images/wydtn-video-hero-poster.jpg"
+    poster="images/wydtn-hero-clean-poster.jpg"
     aria-hidden="true">
-    <source src="images/wydtn-video-hero.mp4" type="video/mp4">
+    <source src="images/wydtn-hero-clean.mp4" type="video/mp4">
   </video>
   <div class="hero-grad"></div>
   <div class="hero-content">
