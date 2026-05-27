@@ -1265,7 +1265,11 @@
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
     .hero { min-height: 88vh; }
     .hero-bg {
-      object-position: center 35%;   /* clean video — just frame her face/neon */
+      /* Raise the video: scale up anchored to the bottom so her face/upper body
+         lift into the clear area above the text overlay (instead of just her head). */
+      object-position: center bottom;
+      transform: scale(1.2);
+      transform-origin: center bottom;
     }
     .hero-grad {
       /* Soft at top (let face/neon show), gradual darkening toward the bottom for text legibility */
