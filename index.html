@@ -139,6 +139,22 @@
     transition: color 0.2s ease;
   }
   nav a:hover { color: var(--rose); }
+  /* Know Your Rights link — distinct visual treatment so it reads as a separate page */
+  nav a.nav-kyr {
+    color: var(--rose-deep);
+    border-left: 1px solid rgba(214, 56, 86, 0.3);
+    padding-left: 18px;
+    margin-left: 8px;
+  }
+  nav a.nav-kyr:hover { color: var(--rose); }
+  /* Mobile menu equivalent: separator above + rose color */
+  .mobile-menu .menu-kyr {
+    margin-top: 14px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(42, 10, 20, 0.14);
+  }
+  .mobile-menu .menu-kyr a { color: var(--rose-deep); }
+  .mobile-menu .menu-kyr a:active { color: var(--rose); }
 
   @media (max-width: 720px) { nav ul { display: none; } }
 
@@ -1509,6 +1525,7 @@
       <li><a href="#imagery">Imagery</a></li>
       <li><a href="#press">Press</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/resources.html" class="nav-kyr" data-en="Know Your Rights" data-tl="Alamin ang Karapatan">Know Your Rights</a></li>
     </ul>
     <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
       <span class="opt is-active" data-lang-opt="en">English Ver</span>
@@ -1534,6 +1551,7 @@
       <li><a href="#imagery"><span class="num">06</span> Imagery</a></li>
       <li><a href="#press"><span class="num">07</span> Press</a></li>
       <li><a href="#contact"><span class="num">08</span> Contact</a></li>
+      <li class="menu-kyr"><a href="/resources.html" data-en-html="<span class='num'>·</span> Know Your Rights" data-tl-html="<span class='num'>·</span> Alamin ang Karapatan"><span class="num">·</span> Know Your Rights</a></li>
     </ul>
     <div class="menu-tagline">ise · est 2026 · Los Angeles</div>
   </div>
