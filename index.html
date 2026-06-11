@@ -142,6 +142,41 @@
 
   @media (max-width: 720px) { nav ul { display: none; } }
 
+  /* ---------- Language toggle (EN ⇄ Taglish) ---------- */
+  .lang-toggle {
+    background: transparent;
+    border: 1px solid rgba(214, 56, 86, 0.35);
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--rose-deep);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    line-height: 1;
+    align-self: center;
+    margin-right: 4px;
+  }
+  .lang-toggle:hover {
+    background: var(--rose);
+    color: #faeae6;
+    border-color: var(--rose);
+  }
+  .lang-toggle.is-tl {
+    background: var(--rose);
+    color: #faeae6;
+    border-color: var(--rose);
+  }
+  @media (max-width: 760px) {
+    .lang-toggle {
+      transform: translateY(-24px);   /* match the hamburger's logo-alignment offset */
+      padding: 4px 9px;
+      font-size: 9px;
+    }
+  }
+
   /* ---------- Hamburger button + mobile menu overlay ---------- */
   .nav-toggle { display: none; }
 
@@ -1426,6 +1461,23 @@
     color: var(--rose);
     margin: 0 10px;
   }
+  footer .footer-resource-link {
+    margin-top: 20px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .footer-resource-link a {
+    color: var(--rose-deep);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(214, 56, 86, 0.35);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  footer .footer-resource-link a:hover {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+  }
 </style>
 </head>
 <body>
@@ -1447,6 +1499,9 @@
       <li><a href="#press">Press</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language">
+      <span class="lang-current">TL</span>
+    </button>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
       <span></span>
@@ -1487,11 +1542,11 @@
   <div class="hero-content">
     <div class="hero-text">
       <div class="eyebrow">
-        <span class="eyebrow-line">Electronic Press Kit</span>
+        <span class="eyebrow-line" data-en="Electronic Press Kit" data-tl="Electronic Press Kit">Electronic Press Kit</span>
         <span class="eyebrow-year">2026</span>
       </div>
       <h1>ise</h1>
-      <p class="tagline">Tattoo artist by trade, music artist at heart. ise is a Filipino-American pop and R&amp;B singer-songwriter from Manila by way of California, now in Los Angeles. Writing the kind of songs she once needed to hear, and working toward the day music is everything.</p>
+      <p class="tagline" data-en="Tattoo artist by trade, music artist at heart. ise is a Filipino-American pop and R&amp;B singer-songwriter from Manila by way of California, now in Los Angeles. Writing the kind of songs she once needed to hear, and working toward the day music is everything." data-tl="Tattoo artist by trade, music artist by heart. Si ise — Filipino-American pop and R&amp;B singer-songwriter, galing Manila, lumaki sa California, at ngayon LA-based na. Sinusulat niya yung kanta na sana narinig niya noong bata pa siya, at working toward yung araw na puro music na lang ang lahat.">Tattoo artist by trade, music artist at heart. ise is a Filipino-American pop and R&amp;B singer-songwriter from Manila by way of California, now in Los Angeles. Writing the kind of songs she once needed to hear, and working toward the day music is everything.</p>
       <div class="meta-row">
         <span>Pop / R&amp;B</span>
         <span>Los Angeles</span>
@@ -1516,8 +1571,8 @@
 </header>
 
 <section id="about">
-  <div class="section-label">About</div>
-  <h2 class="section-title"><em>Lover Girl</em> from Manila to Los Angeles.</h2>
+  <div class="section-label" data-en="About" data-tl="Sino si ise">About</div>
+  <h2 class="section-title" data-en-html="<em>Lover Girl</em> from Manila to Los Angeles." data-tl-html="<em>Lover Girl</em> galing Manila, ngayon LA na."><em>Lover Girl</em> from Manila to Los Angeles.</h2>
   <div class="bio-grid">
     <div class="bio-facts">
       <dl>
@@ -1533,18 +1588,18 @@
       </dl>
     </div>
     <div>
-      <p><strong>ise</strong> (pronounced <em>"ai-ss"</em>) is from Manila by way of California, now living in LA. Right now she tattoos for a living. The long-term plan is to be doing music for a living instead.</p>
-      <p>Under <strong>@tatsbyise</strong> she runs a fine-line and traditional tattoo practice with a loyal client base. That's the day job that pays for the dream of doing music full time.</p>
-      <p>Her 2026 single <em>"Tattoo"</em> takes its imagery straight from the chair: the needle, the permanence, the marks people leave on each other. Earlier releases like <em>"your loss, baby"</em> (released under her old name, Denise Rosete), <em>"wyd tn?", "Not With You",</em> and <em>"we'd be cute."</em> sit in the same emotional territory.</p>
-      <p>Musically she pulls from Ariana Grande, Jhené Aiko, and Kehlani, and writes pop and R&amp;B for the stuff that's hard to say out loud. She's pushing to make music the main thing one day, and hoping more Asian-American artists feel like they can do the same.</p>
+      <p data-en-html="<strong>ise</strong> (pronounced <em>&quot;ai-ss&quot;</em>) is from Manila by way of California, now living in LA. Right now she tattoos for a living. The long-term plan is to be doing music for a living instead." data-tl-html="Si <strong>ise</strong> (binabasa as <em>&quot;ai-ss&quot;</em>) ay galing Manila, dumaan sa California, at ngayon nasa LA na. Nag-ta-tattoo siya for now bilang trabaho. Pero yung long-term plan? Music na ang livelihood."><strong>ise</strong> (pronounced <em>"ai-ss"</em>) is from Manila by way of California, now living in LA. Right now she tattoos for a living. The long-term plan is to be doing music for a living instead.</p>
+      <p data-en-html="Under <strong>@tatsbyise</strong> she runs a fine-line and traditional tattoo practice with a loyal client base. That's the day job that pays for the dream of doing music full time." data-tl-html="Sa <a href='https://instagram.com/tatsbyise' target='_blank' rel='noopener' class='bio-link'><strong>@tatsbyise</strong></a> masusundan mo yung tattoo work niya — fine-line at traditional style, may loyal clients na siya. Yan yung day job na bumubuhay sa pangarap na maging full-time musician.">Under <strong>@tatsbyise</strong> she runs a fine-line and traditional tattoo practice with a loyal client base. That's the day job that pays for the dream of doing music full time.</p>
+      <p data-en-html="Her 2026 single <em>&quot;Tattoo&quot;</em> takes its imagery straight from the chair: the needle, the permanence, the marks people leave on each other. Earlier releases like <em>&quot;your loss, baby&quot;</em> (released under her old name, Denise Rosete), <em>&quot;wyd tn?&quot;, &quot;Not With You&quot;,</em> and <em>&quot;we'd be cute.&quot;</em> sit in the same emotional territory." data-tl-html="Yung 2026 single niya na <em>&quot;Tattoo&quot;</em> ay galing literally sa chair: yung needle, yung permanence, yung mga marks na iniiwan ng mga tao sa isa't isa. Yung mga earlier releases niya tulad ng <em>&quot;your loss, baby&quot;</em> (released under her old name, Denise Rosete), <em>&quot;wyd tn?&quot;, &quot;Not With You&quot;,</em> and <em>&quot;we'd be cute.&quot;</em> ay parehong emosyonal na vibes.">Her 2026 single <em>"Tattoo"</em> takes its imagery straight from the chair: the needle, the permanence, the marks people leave on each other. Earlier releases like <em>"your loss, baby"</em> (released under her old name, Denise Rosete), <em>"wyd tn?", "Not With You",</em> and <em>"we'd be cute."</em> sit in the same emotional territory.</p>
+      <p data-en-html="Musically she pulls from Ariana Grande, Jhené Aiko, and Kehlani, and writes pop and R&amp;B for the stuff that's hard to say out loud. She's pushing to make music the main thing one day, and hoping more Asian-American artists feel like they can do the same." data-tl-html="Yung music influences niya ay Ariana Grande, Jhené Aiko, at Kehlani. Sumusulat siya ng pop and R&amp;B para sa mga bagay na mahirap sabihin out loud. Pinupursue niya na maging music na ang main thing balang araw, at umaasa siya na mas maraming Asian-American artists ang makakaramdam na kaya rin nilang gawin to.">Musically she pulls from Ariana Grande, Jhené Aiko, and Kehlani, and writes pop and R&amp;B for the stuff that's hard to say out loud. She's pushing to make music the main thing one day, and hoping more Asian-American artists feel like they can do the same.</p>
     </div>
   </div>
 </section>
 
 <div class="listen-wrap" id="listen">
   <div class="inner">
-    <div class="section-label">Listen</div>
-    <h2 class="section-title">Press <em>play</em>.</h2>
+    <div class="section-label" data-en="Listen" data-tl="Makinig">Listen</div>
+    <h2 class="section-title" data-en-html="Press <em>play</em>." data-tl-html="<em>Press play</em>.">Press <em>play</em>.</h2>
     <div class="listen-grid listen-grid--single">
       <div>
         <div class="panel-title">Selected discography</div>
@@ -1592,8 +1647,8 @@
 </div>
 
 <section id="watch">
-  <div class="section-label">Watch</div>
-  <h2 class="section-title">Music <em>videos</em>.</h2>
+  <div class="section-label" data-en="Watch" data-tl="Panoorin">Watch</div>
+  <h2 class="section-title" data-en-html="Music <em>videos</em>." data-tl-html="Music <em>videos</em>.">Music <em>videos</em>.</h2>
   <div class="videos-grid">
     <div class="video-card">
       <div class="video-frame">
@@ -1631,8 +1686,8 @@
 </section>
 
 <section id="diml">
-  <div class="section-label">Day in the Life</div>
-  <h2 class="section-title">A <em>day</em> in the life.</h2>
+  <div class="section-label" data-en="Day in the Life" data-tl="Day in the Life">Day in the Life</div>
+  <h2 class="section-title" data-en-html="A <em>day</em> in the life." data-tl-html="Isang <em>araw</em> sa buhay.">A <em>day</em> in the life.</h2>
 
   <div class="diml-grid">
     <div class="diml-card">
@@ -1663,8 +1718,8 @@
 </section>
 
 <section id="studio">
-  <div class="section-label">Studio</div>
-  <h2 class="section-title"><em>Tattoo artist</em> by day.</h2>
+  <div class="section-label" data-en="Studio" data-tl="Studio">Studio</div>
+  <h2 class="section-title" data-en-html="<em>Tattoo artist</em> by day." data-tl-html="<em>Tattoo artist</em> sa araw."><em>Tattoo artist</em> by day.</h2>
 
   <!-- Moving-studios announcement banner — links straight to booking form -->
   <a class="studio-banner" href="https://forms.fillout.com/t/cS6FA5y3Lcus?utm_source=epk&utm_medium=website&utm_content=banner" target="_blank" rel="noopener" aria-label="Open the booking form — June/July 2026, moving studios in Los Angeles">
@@ -1708,8 +1763,8 @@
 </section>
 
 <section id="imagery">
-  <div class="section-label">Imagery</div>
-  <h2 class="section-title">Press <em>photos</em>.</h2>
+  <div class="section-label" data-en="Imagery" data-tl="Mga Larawan">Imagery</div>
+  <h2 class="section-title" data-en-html="Press <em>photos</em>." data-tl-html="Mga press <em>photo</em>.">Press <em>photos</em>.</h2>
   <div class="gallery-frame">
     <div class="gallery-main">
       <img id="galleryMain" src="images/ise-press-1.png" alt="ise — press photo">
@@ -1738,8 +1793,8 @@
 </section>
 
 <section id="press">
-  <div class="section-label">Press</div>
-  <h2 class="section-title">In the <em>conversation</em>.</h2>
+  <div class="section-label" data-en="Press" data-tl="Press">Press</div>
+  <h2 class="section-title" data-en-html="In the <em>conversation</em>." data-tl-html="Sa <em>usapan</em>.">In the <em>conversation</em>.</h2>
   <div class="press-grid">
     <div class="quote">
       <blockquote>A stellar job of establishing her bop-heavy brand of engaging pop-tinged R&amp;B.</blockquote>
@@ -1757,8 +1812,8 @@
 </section>
 
 <section id="contact">
-  <div class="section-label">Contact</div>
-  <h2 class="section-title">Let's <em>work</em> together.</h2>
+  <div class="section-label" data-en="Contact" data-tl="Makipag-ugnayan">Contact</div>
+  <h2 class="section-title" data-en-html="Let's <em>work</em> together." data-tl-html="Tara, mag<em>work</em> tayo together.">Let's <em>work</em> together.</h2>
 
   <!-- Primary CTA: what we want visitors to do -->
   <div class="contact-card">
@@ -1821,6 +1876,38 @@
 </div>
 
 <script>
+  /* ---- Language toggle: EN ⇄ TL (Taglish) ---- */
+  (function() {
+    const KEY = 'siteLang';
+    function applyLang(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const v = el.getAttribute('data-' + lang);
+        if (v != null) el.textContent = v;
+      });
+      document.querySelectorAll('[data-en-html]').forEach(el => {
+        const v = el.getAttribute('data-' + lang + '-html');
+        if (v != null) el.innerHTML = v;
+      });
+      const btn = document.getElementById('langToggle');
+      if (btn) {
+        btn.querySelector('.lang-current').textContent = lang === 'en' ? 'TL' : 'EN';
+        btn.classList.toggle('is-tl', lang === 'tl');
+        btn.setAttribute('aria-label', lang === 'en' ? 'Switch to Taglish' : 'Switch to English');
+      }
+      document.documentElement.lang = lang === 'tl' ? 'tl-PH' : 'en';
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
+    }
+    const saved = (function() { try { return localStorage.getItem(KEY); } catch (e) { return null; } })();
+    if (saved === 'tl') applyLang('tl');
+    const btn = document.getElementById('langToggle');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const current = document.documentElement.lang.startsWith('tl') ? 'tl' : 'en';
+        applyLang(current === 'en' ? 'tl' : 'en');
+      });
+    }
+  })();
+
   /* ---- Hero video: force autoplay on iOS Safari quirks ---- */
   (function() {
     const video = document.getElementById('heroVideo');
@@ -1928,6 +2015,9 @@
   <img src="images/ise_creatives-logo.png" alt="Ise Creatives" class="footer-logo">
   <div class="footer-meta">
     © 2026 ise<span class="dot">◆</span>Ise Creatives LLC<span class="dot">◆</span>Managed by Kolosseum
+  </div>
+  <div class="footer-resource-link">
+    <a href="/resources.html" data-en="Know your rights · Community resources" data-tl="Alamin ang iyong karapatan · Community resources">Know your rights · Community resources</a>
   </div>
 </footer>
 

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Know Your Rights — Resources · ise</title>
+<meta name="description" content="A short guide to your rights if ICE comes to your door or stops you. Plus verified hotlines and organizations to call for help. This is informational only — not legal advice." />
+<meta name="robots" content="index, follow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #faeae6;
+    --bg-card: #ffffff;
+    --ink: #2a0a14;
+    --ink-soft: #6d2f3e;
+    --rose: #d63856;
+    --rose-deep: #8e1736;
+    --rose-soft: #f4a8b4;
+    --alert: #b8163a;
+    --rule: rgba(42, 10, 20, 0.14);
+    --max: 880px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* iOS safe-area cover */
+  .ios-safe-cover {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .ios-safe-cover {
+      display: block;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: max(env(safe-area-inset-top, 0px), 40px);
+      background: var(--bg);
+      z-index: 200;
+      pointer-events: none;
+    }
+    body { padding-top: max(env(safe-area-inset-top, 0px), 40px); }
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 234, 230, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  nav .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  nav .back:hover { color: var(--rose); }
+  nav .page-label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+  }
+
+  /* Main content */
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .page-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 7vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .page-title em { color: var(--rose); font-style: italic; }
+  .page-intro {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    line-height: 1.65;
+  }
+
+  /* Emergency call-out at top */
+  .emergency {
+    background:
+      radial-gradient(ellipse at 90% 0%, rgba(214, 56, 86, 0.35) 0%, transparent 60%),
+      linear-gradient(135deg, var(--ink) 0%, #4a0f20 100%);
+    color: #faeae6;
+    border-radius: 12px;
+    padding: 28px 28px;
+    margin-bottom: 56px;
+    box-shadow: 0 28px 60px -30px rgba(142, 23, 54, 0.5);
+  }
+  .emergency .em-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .emergency h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0 0 16px;
+    line-height: 1.15;
+  }
+  .emergency .em-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .emergency .em-list li {
+    background: rgba(244, 168, 180, 0.12);
+    padding: 14px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(244, 168, 180, 0.2);
+  }
+  .emergency .em-list .em-name {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-soft);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .emergency .em-list a {
+    color: #faeae6;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    border-bottom: 1px solid rgba(244, 168, 180, 0.4);
+    padding-bottom: 1px;
+  }
+  .emergency .em-list a:hover { border-color: var(--rose-soft); }
+  @media (max-width: 600px) {
+    .emergency .em-list { grid-template-columns: 1fr; }
+    .emergency h2 { font-size: 22px; }
+  }
+
+  /* Sections */
+  section.kyr {
+    margin-bottom: 56px;
+    scroll-margin-top: 90px;
+  }
+  section.kyr .section-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section.kyr .section-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--rose);
+  }
+  section.kyr h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4.5vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 24px;
+    color: var(--ink);
+  }
+  section.kyr h2 em { color: var(--rose); font-style: italic; }
+  section.kyr h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 24px 0 12px;
+    letter-spacing: 0.02em;
+  }
+  section.kyr p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    line-height: 1.65;
+  }
+  section.kyr p:last-child { margin-bottom: 0; }
+  section.kyr strong { color: var(--ink); font-weight: 600; }
+  section.kyr a { color: var(--rose-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  section.kyr a:hover { color: var(--rose); }
+
+  /* Rights cards */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .right-card {
+    background: var(--bg-card);
+    padding: 22px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 16px 40px -28px rgba(142, 23, 54, 0.35);
+  }
+  .right-card .num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--rose);
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .right-card .right-title {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .right-card .right-detail {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  @media (max-width: 700px) {
+    .rights-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Scenario blocks */
+  .scenario {
+    background: var(--bg-card);
+    padding: 28px 28px;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    margin: 18px 0;
+    box-shadow: 0 18px 50px -28px rgba(142, 23, 54, 0.3);
+  }
+  .scenario h3 {
+    margin-top: 0;
+  }
+  .scenario ul.do, .scenario ul.dont {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 18px;
+  }
+  .scenario ul.do li, .scenario ul.dont li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .scenario ul.do li::before {
+    content: "✓";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    color: #2c7e3f;
+    font-weight: 700;
+  }
+  .scenario ul.dont li::before {
+    content: "✕";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    color: var(--alert);
+    font-weight: 700;
+  }
+  .scenario .scenario-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--rose-deep);
+  }
+
+  /* Org grid */
+  .org-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .org-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: block;
+  }
+  .org-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -20px rgba(142, 23, 54, 0.4);
+    border-color: var(--rose);
+  }
+  .org-card .org-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .org-card .org-region {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .org-card .org-detail {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .org-card .org-arrow {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .org-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 40px;
+    padding: 22px 24px;
+    background: rgba(244, 168, 180, 0.18);
+    border-left: 3px solid var(--rose);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .disclaimer strong { color: var(--ink); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 60px 24px 60px;
+    border-top: 1px solid var(--rule);
+    margin-top: 40px;
+  }
+  footer .divider {
+    width: 32px;
+    height: 1px;
+    background: var(--rose);
+    margin: 0 auto 20px;
+  }
+  footer .footer-text {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  footer .footer-text a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+  footer .footer-text a:hover { color: var(--rose); }
+</style>
+</head>
+<body>
+
+<div class="ios-safe-cover" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="back">← Back to ise</a>
+    <span class="page-label">Resources</span>
+  </div>
+</nav>
+
+<main>
+  <header class="page-header">
+    <div class="page-eyebrow">Community Resources</div>
+    <h1 class="page-title">Know <em>your rights</em>.</h1>
+    <p class="page-intro">A short, scannable guide to your constitutional rights if ICE (Immigration and Customs Enforcement) comes to your door or stops you in public, plus verified hotlines and organizations to call. Save this page. Share it with people who need it.</p>
+  </header>
+
+  <!-- Emergency hotlines top of page -->
+  <div class="emergency">
+    <div class="em-label">If you need help right now</div>
+    <h2>Call a rapid-response network in Los Angeles.</h2>
+    <ul class="em-list">
+      <li>
+        <span class="em-name">CHIRLA Hotline (LA)</span>
+        <a href="tel:+18886244752">1-888-624-4752</a>
+      </li>
+      <li>
+        <span class="em-name">National ACLU Helpline</span>
+        <a href="tel:+12122849400">212-549-2500</a>
+      </li>
+      <li>
+        <span class="em-name">United We Dream Hotline</span>
+        <a href="tel:+18444363486">1-844-363-1423</a>
+      </li>
+      <li>
+        <span class="em-name">Immigrant Defenders Law Center</span>
+        <a href="https://www.immdef.org/contact" target="_blank" rel="noopener">immdef.org/contact ↗</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 1: Constitutional rights -->
+  <section class="kyr" id="rights">
+    <div class="section-label">Section 1</div>
+    <h2>Your rights under the <em>U.S. Constitution</em>.</h2>
+    <p>These apply to <strong>everyone</strong> in the United States, regardless of immigration status. Your rights don't depend on having papers.</p>
+
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="num">01</div>
+        <div class="right-title">The right to remain silent.</div>
+        <div class="right-detail">You don't have to answer questions about where you were born, your immigration status, or how you entered the U.S. You can say: "I want to remain silent."</div>
+      </div>
+      <div class="right-card">
+        <div class="num">02</div>
+        <div class="right-title">The right to refuse a search.</div>
+        <div class="right-detail">Officers can't search you or your belongings without your consent or a judicial warrant. You can say: "I do not consent to a search."</div>
+      </div>
+      <div class="right-card">
+        <div class="num">03</div>
+        <div class="right-title">The right to a lawyer.</div>
+        <div class="right-detail">If detained, ask for a lawyer immediately. Do not sign anything without one. You have the right to make a phone call.</div>
+      </div>
+      <div class="right-card">
+        <div class="num">04</div>
+        <div class="right-title">The right to refuse entry without a judicial warrant.</div>
+        <div class="right-detail">ICE cannot enter your home without a warrant <strong>signed by a judge</strong>. An ICE administrative warrant (Form I-200 or I-205) is NOT enough.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: At your door -->
+  <section class="kyr" id="at-door">
+    <div class="section-label">Section 2</div>
+    <h2>If ICE comes to <em>your door</em>.</h2>
+
+    <div class="scenario">
+      <div class="scenario-label">DO</div>
+      <ul class="do">
+        <li><strong>Stay calm</strong> and keep the door <strong>closed</strong>.</li>
+        <li>Ask through the door: <em>"Do you have a warrant signed by a judge?"</em></li>
+        <li>Ask them to <strong>slide the warrant under the door</strong> so you can see it.</li>
+        <li>Check for the words <strong>"U.S. District Court"</strong> or a state court, and a <strong>judge's signature</strong>.</li>
+        <li>If you choose to speak, say: <em>"I want to remain silent. I want to speak to a lawyer."</em></li>
+        <li><strong>Memorize the lawyer's number.</strong> Write it on your arm or keep it in your wallet.</li>
+      </ul>
+
+      <div class="scenario-label">DON'T</div>
+      <ul class="dont">
+        <li><strong>Don't open the door</strong> without seeing a judicial warrant.</li>
+        <li>Don't give them permission to enter — verbal or written.</li>
+        <li>Don't answer questions about where you were born or your immigration status.</li>
+        <li>Don't lie or show false documents. Stay silent instead.</li>
+        <li>Don't sign anything without a lawyer reviewing it.</li>
+      </ul>
+    </div>
+
+    <h3>How to tell the difference between warrants</h3>
+    <p>An <strong>administrative warrant</strong> from ICE (Form I-200 or I-205) is <strong>not</strong> signed by a judge and <strong>does not give ICE the right to enter your home</strong>. A <strong>judicial warrant</strong> is signed by a federal or state judge and lists "U.S. District Court" or a court name. <a href="https://www.aclu.org/know-your-rights/immigrants-rights" target="_blank" rel="noopener">See ACLU's warrant guide ↗</a>.</p>
+  </section>
+
+  <!-- Section 3: On the street -->
+  <section class="kyr" id="on-street">
+    <div class="section-label">Section 3</div>
+    <h2>If you're stopped on <em>the street</em>.</h2>
+
+    <div class="scenario">
+      <div class="scenario-label">DO</div>
+      <ul class="do">
+        <li>Stay calm. Don't run — running can be used against you.</li>
+        <li>Ask: <em>"Am I free to leave?"</em> If yes, walk away calmly.</li>
+        <li>If they say no, you have the right to remain silent. Say: <em>"I want to remain silent."</em></li>
+        <li>If you have a "Know Your Rights" red card, hand it to the officer instead of speaking.</li>
+        <li>Record the encounter (audio or video) if you can do so safely.</li>
+      </ul>
+
+      <div class="scenario-label">DON'T</div>
+      <ul class="dont">
+        <li>Don't answer questions about your immigration status.</li>
+        <li>Don't carry false documents or anything that proves a different country of citizenship.</li>
+        <li>Don't sign anything without a lawyer.</li>
+        <li>Don't resist physically, even if you believe the stop is unjust.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: If detained -->
+  <section class="kyr" id="if-detained">
+    <div class="section-label">Section 4</div>
+    <h2>If you're <em>detained</em>.</h2>
+    <p>If ICE takes you into custody, the most important things are: <strong>ask for a lawyer, stay silent, don't sign anything</strong>.</p>
+
+    <div class="scenario">
+      <div class="scenario-label">REMEMBER</div>
+      <ul class="do">
+        <li>You have the right to <strong>make a phone call</strong>. Call your lawyer or a family member.</li>
+        <li>You have the right to <strong>refuse to sign any document</strong> until a lawyer reviews it. Signing "voluntary departure" or "stipulated removal" forms can give up your right to a hearing.</li>
+        <li>You have the right to <strong>a hearing in immigration court</strong> before being deported (with few exceptions).</li>
+        <li>You can request a <strong>list of free or low-cost legal services</strong> at any ICE facility.</li>
+      </ul>
+    </div>
+
+    <h3>Get a "red card" ahead of time</h3>
+    <p>Red cards are small, printable pocket cards (in English, Spanish, and other languages) that state your constitutional rights. You hand them to an officer instead of speaking. Download free red cards from the <a href="https://www.ilrc.org/red-cards-tarjetas-rojas" target="_blank" rel="noopener">Immigrant Legal Resource Center (ILRC) ↗</a>.</p>
+  </section>
+
+  <!-- Section 5: Organizations -->
+  <section class="kyr" id="orgs">
+    <div class="section-label">Section 5</div>
+    <h2>Trusted <em>organizations</em>.</h2>
+    <p>These groups provide free or low-cost legal help, rapid-response networks, and verified resources. Click through to their websites for the most current contact info.</p>
+
+    <div class="org-grid">
+      <a class="org-card" href="https://www.chirla.org/" target="_blank" rel="noopener">
+        <div class="org-region">Los Angeles</div>
+        <div class="org-name">CHIRLA</div>
+        <div class="org-detail">Coalition for Humane Immigrant Rights of Los Angeles. Runs the LA rapid-response hotline and provides legal services and advocacy.</div>
+        <div class="org-arrow">chirla.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.immdef.org/" target="_blank" rel="noopener">
+        <div class="org-region">Los Angeles</div>
+        <div class="org-name">ImmDef</div>
+        <div class="org-detail">Immigrant Defenders Law Center. Provides free legal representation to detained immigrants in Southern California.</div>
+        <div class="org-arrow">immdef.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.aclu.org/know-your-rights/immigrants-rights" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">ACLU</div>
+        <div class="org-detail">American Civil Liberties Union — comprehensive Know Your Rights guides in multiple languages.</div>
+        <div class="org-arrow">aclu.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.nilc.org/" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">NILC</div>
+        <div class="org-detail">National Immigration Law Center. Policy, litigation, and education on immigrant rights nationally.</div>
+        <div class="org-arrow">nilc.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://unitedwedream.org/" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">United We Dream</div>
+        <div class="org-detail">Youth-led immigrant rights organization with resources, training, and a deportation defense hotline.</div>
+        <div class="org-arrow">unitedwedream.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.ilrc.org/red-cards-tarjetas-rojas" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">ILRC Red Cards</div>
+        <div class="org-detail">Immigrant Legal Resource Center. Free printable "Know Your Rights" red cards in 18 languages.</div>
+        <div class="org-arrow">ilrc.org ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.informedimmigrant.com/" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">Informed Immigrant</div>
+        <div class="org-detail">Free, plain-language guides on immigration policy, your rights, and how to find a trusted lawyer.</div>
+        <div class="org-arrow">informedimmigrant.com ↗</div>
+      </a>
+
+      <a class="org-card" href="https://www.raicestexas.org/" target="_blank" rel="noopener">
+        <div class="org-region">National</div>
+        <div class="org-name">RAICES</div>
+        <div class="org-detail">Refugee and Immigrant Center for Education and Legal Services. Free and low-cost legal representation.</div>
+        <div class="org-arrow">raicestexas.org ↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>This is informational, not legal advice.</strong> Immigration law is complex, and your individual situation may require specific legal counsel. Always consult a licensed immigration attorney or a trusted nonprofit legal-services organization for advice on your case. The information here is sourced from the ACLU, NILC, CHIRLA, and other public resources and was current at the time of publication.
+  </div>
+</main>
+
+<footer>
+  <div class="divider"></div>
+  <div class="footer-text">
+    Curated by <a href="/">ise creatives</a> · Los Angeles
+  </div>
+</footer>
+
+</body>
+</html>
