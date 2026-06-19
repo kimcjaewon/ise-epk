@@ -125,17 +125,19 @@
   nav ul {
     list-style: none;
     display: flex;
-    gap: 32px;
+    gap: 18px;
     margin: 0;
     padding: 0;
+    align-items: center;
   }
   nav a {
     color: var(--ink-soft);
     text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 500;
+    white-space: nowrap;       /* never break across lines */
     transition: color 0.2s ease;
   }
   nav a:hover { color: var(--rose); }
@@ -174,12 +176,12 @@
     line-height: 1;
   }
   .lang-toggle .opt {
-    padding: 6px 11px;
+    padding: 5px 9px;
     border-radius: 999px;
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--rose-deep);
     transition: background 0.25s ease, color 0.25s ease;
@@ -1520,7 +1522,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#listen">Listen</a></li>
       <li><a href="#watch">Watch</a></li>
-      <li><a href="#diml">Day in the Life</a></li>
+      <li><a href="#diml">Day in Life</a></li>
       <li><a href="#studio">Studio</a></li>
       <li><a href="#imagery">Imagery</a></li>
       <li><a href="#press">Press</a></li>
