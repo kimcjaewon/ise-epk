@@ -462,6 +462,103 @@
     .hero-player { margin-top: 8px; }
   }
 
+  /* ---------- Upcoming show / Release party ---------- */
+  .upcoming-card {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 36px;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 24px;
+    box-shadow: 0 28px 70px -30px rgba(142, 23, 54, 0.45);
+  }
+  .upcoming-flyer {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -20px rgba(142, 23, 54, 0.5);
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .upcoming-flyer:hover { transform: translateY(-3px); }
+  .upcoming-flyer img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .upcoming-details .event-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .upcoming-details .event-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .upcoming-details .event-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 14px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .upcoming-details .event-meta dt {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    padding-top: 3px;
+  }
+  .upcoming-details .event-meta dd { margin: 0; color: var(--ink); }
+  .upcoming-details .event-desc {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 22px 0;
+    line-height: 1.55;
+  }
+  .ticket-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rose);
+    color: #faeae6;
+    text-decoration: none;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 14px 30px -10px rgba(214, 56, 86, 0.5);
+  }
+  .ticket-cta:hover {
+    background: var(--rose-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px -10px rgba(214, 56, 86, 0.65);
+  }
+  @media (max-width: 760px) {
+    .upcoming-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 20px;
+    }
+    .upcoming-details .event-title { font-size: 24px; }
+  }
+
   /* ---------- Sections ---------- */
   section {
     padding: 110px 32px;
@@ -713,9 +810,9 @@
   /* ---------- Day in the Life (vertical phone videos) ---------- */
   .diml-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 720px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 980px;
     margin: 0 auto;
   }
   .diml-card {
@@ -1519,6 +1616,7 @@
       <img src="images/ise_creatives-logo.png" alt="Ise Creatives">
     </a>
     <ul>
+      <li><a href="#upcoming">Live</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#listen">Listen</a></li>
       <li><a href="#watch">Watch</a></li>
@@ -1545,14 +1643,15 @@
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation">
   <div class="mobile-menu-inner">
     <ul>
-      <li><a href="#about"><span class="num">01</span> About</a></li>
-      <li><a href="#listen"><span class="num">02</span> Listen</a></li>
-      <li><a href="#watch"><span class="num">03</span> Watch</a></li>
-      <li><a href="#diml"><span class="num">04</span> Day in the Life</a></li>
-      <li><a href="#studio"><span class="num">05</span> Book your tattoo appointment</a></li>
-      <li><a href="#imagery"><span class="num">06</span> Imagery</a></li>
-      <li><a href="#press"><span class="num">07</span> Press</a></li>
-      <li><a href="#contact"><span class="num">08</span> Contact</a></li>
+      <li><a href="#upcoming"><span class="num">01</span> Live · Release Party</a></li>
+      <li><a href="#about"><span class="num">02</span> About</a></li>
+      <li><a href="#listen"><span class="num">03</span> Listen</a></li>
+      <li><a href="#watch"><span class="num">04</span> Watch</a></li>
+      <li><a href="#diml"><span class="num">05</span> Day in the Life</a></li>
+      <li><a href="#studio"><span class="num">06</span> Book your tattoo appointment</a></li>
+      <li><a href="#imagery"><span class="num">07</span> Imagery</a></li>
+      <li><a href="#press"><span class="num">08</span> Press</a></li>
+      <li><a href="#contact"><span class="num">09</span> Contact</a></li>
       <li class="menu-kyr"><a href="/resources.html" data-en-html="<span class='num'>·</span> Know Your Rights" data-tl-html="<span class='num'>·</span> Alamin ang Karapatan"><span class="num">·</span> Know Your Rights</a></li>
     </ul>
     <div class="menu-tagline">ise · est 2026 · Los Angeles</div>
@@ -1601,6 +1700,28 @@
     </div>
   </div>
 </header>
+
+<section id="upcoming">
+  <div class="section-label" data-en="Upcoming" data-tl="Susunod">Upcoming</div>
+  <h2 class="section-title" data-en-html="<em>Song release</em> party." data-tl-html="<em>Song release</em> party."><em>Song release</em> party.</h2>
+
+  <div class="upcoming-card">
+    <a class="upcoming-flyer" href="https://posh.vip/e/put-it-on-you-release-party" target="_blank" rel="noopener" aria-label="Get tickets — Put It On You release party, August 29, 2026 in Los Angeles">
+      <img src="images/release-party-flyer.jpg" alt="Put It On You — release party · 08.29.26 · Los Angeles">
+    </a>
+    <div class="upcoming-details">
+      <div class="event-date">Aug 29, 2026</div>
+      <div class="event-title">Put It On You — Release Party</div>
+      <dl class="event-meta">
+        <dt>Time</dt><dd>9:30 PM &ndash; 1:30 AM</dd>
+        <dt>City</dt><dd>Los Angeles</dd>
+        <dt>Includes</dt><dd>Live music, special guests, and more</dd>
+      </dl>
+      <p class="event-desc" data-en="Celebrate the release of ise's new single 'Put It On You.' Live performance, friends from the LA scene, and a full night to mark the moment." data-tl="Celebrate ang release ng bagong single ni ise na 'Put It On You.' May live performance, mga kaibigan from the LA scene, at full night para mag-celebrate.">Celebrate the release of ise's new single "Put It On You." Live performance, friends from the LA scene, and a full night to mark the moment.</p>
+      <a class="ticket-cta" href="https://posh.vip/e/put-it-on-you-release-party" target="_blank" rel="noopener" data-en="Get tickets ↗" data-tl="Bumili ng tickets ↗">Get tickets ↗</a>
+    </div>
+  </div>
+</section>
 
 <section id="about">
   <div class="section-label" data-en="About" data-tl="Sino si ise">About</div>
@@ -1746,6 +1867,18 @@
         <span class="d-meta">Guest Artist</span>
       </div>
     </div>
+    <div class="diml-card">
+      <div class="diml-frame">
+        <video controls playsinline preload="metadata" poster="images/diml-3-poster.jpg">
+          <source src="images/diml-3.mp4" type="video/mp4">
+          Your browser doesn't support this video format.
+        </video>
+      </div>
+      <div class="diml-caption">
+        <span class="d-label">Studio + Stage</span>
+        <span class="d-meta">Music & Tattoo</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1753,17 +1886,11 @@
   <div class="section-label" data-en="Studio" data-tl="Studio">Studio</div>
   <h2 class="section-title" data-en-html="<em>Tattoo artist</em> by day." data-tl-html="<em>Tattoo artist</em> sa araw."><em>Tattoo artist</em> by day.</h2>
 
-  <!-- Moving-studios announcement banner — links straight to booking form -->
-  <a class="studio-banner" href="https://forms.fillout.com/t/cS6FA5y3Lcus?utm_source=epk&utm_medium=website&utm_content=banner" target="_blank" rel="noopener" aria-label="Open the booking form — June/July 2026, moving studios in Los Angeles">
-    <img src="images/Im-moving-soon.jpg" alt="I'm moving studios! June/July 2026. Booking open.">
-    <span class="banner-cta">Book ↗</span>
-  </a>
-
   <div class="studio-grid">
     <div class="studio-prose">
       <p>Before ise the singer, there's ise the tattoo artist. Under the handle <a href="https://instagram.com/tatsbyise" target="_blank" rel="noopener" class="bio-link"><strong>@tatsbyise</strong></a> she's built a fine-line and traditional ink practice with its own loyal following.</p>
       <p>The two crafts feed each other. Her 2026 single, fittingly named <em>"Tattoo,"</em> draws straight from the day job: the chair, the needle, the marks people leave on each other.</p>
-      <p><strong>Studio update:</strong> she's moving studios in Los Angeles this summer (June/July 2026). Bear with her during the transition. New bookings are open now.</p>
+      <p>Now working out of her new home studio at <strong>Bear With Me</strong> in Los Angeles. Booking is open.</p>
     </div>
 
     <a class="studio-cta" href="https://forms.fillout.com/t/cS6FA5y3Lcus?utm_source=epk&utm_medium=website&utm_content=cta_card" target="_blank" rel="noopener">
