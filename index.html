@@ -1411,11 +1411,13 @@
       top: max(env(safe-area-inset-top, 0px), 40px);
     }
     nav .nav-inner { padding: 2px 16px; overflow: visible; }
-    /* Nav z-index must be ABOVE the safe-area cover (z-200) so the logo isn't hidden */
+    /* Nav z-index ABOVE safe-area cover (z-200) so the logo can sit visually on top */
     nav { overflow: visible; z-index: 250; }
+    /* Logo: bigger visually but negative top margin pulls it up into the safe-area cover,
+       keeping the bar's content area tight. Logo ends up centered in the visible cream. */
     nav .logo img {
-      height: 26px;          /* compact horizontal wordmark on mobile */
-      margin: 0;
+      height: 44px;
+      margin: -18px 0 -2px 0;   /* layout box ~24px; visual extends 18px up */
     }
 
     /* Hero: text pushed to bottom so the photo above is clear (face visible above overlays) */
